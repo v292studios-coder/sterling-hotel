@@ -1,6 +1,6 @@
 /* ============================================================
    Sterling Hotels and Resorts — BOOKING & MODAL ENGINE
-   Date Validation · Dynamic Calculations · Local Storage Forms
+   India Date Format (DD/MM/YYYY) · Progressive Flatpickr
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,49 +12,205 @@ document.addEventListener('DOMContentLoaded', () => {
     'penthouse': 2500
   };
 
-  // --- DATE PICKER LOGIC ---
+  // --- DATE PICKER ENGINE (DD/MM/YYYY) ---
   const checkInInput = document.getElementById('check-in');
   const checkOutInput = document.getElementById('check-out');
+  const modalCheckIn = document.getElementById('modal-check-in');
+  const modalCheckOut = document.getElementById('modal-check-out');
 
-  // Set minimum date to today
-  if (checkInInput && checkOutInput) {
-    const today = new Date().toISOString().split('T')[0];
-    checkInInput.min = today;
-    
-    // Default values: Check-in = tomorrow, Check-out = day after tomorrow
-    const checkInDate = new Date();
-    checkInDate.setDate(checkInDate.getDate() + 1);
-    checkInInput.value = checkInDate.toISOString().split('T')[0];
-
-    const checkOutDate = new Date();
-    checkOutDate.setDate(checkOutDate.getDate() + 3);
-    checkOutInput.value = checkOutDate.toISOString().split('T')[0];
-    checkOutInput.min = checkInInput.value;
-
-    checkInInput.addEventListener('change', () => {
-      // Ensure check-out is at least 1 day after check-in
-      const checkInVal = new Date(checkInInput.value);
-      const minCheckOutDate = new Date(checkInVal);
-      minCheckOutDate.setDate(minCheckOutDate.getDate() + 1);
-      
-      checkOutInput.min = minCheckOutDate.toISOString().split('T')[0];
-      
-      if (new Date(checkOutInput.value) <= checkInVal) {
-        checkOutInput.value = minCheckOutDate.toISOString().split('T')[0];
-      }
-      calculateNightsAndPrice();
-    });
-
-    checkOutInput.addEventListener('change', () => {
-      calculateNightsAndPrice();
-    });
+  // Helper: Format Date object to DD/MM/YYYY
+  function formatDateToDMY(date) {
+    const d = String(date.getDate()).padStart(2, '0');
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const y = date.getFullYear();
+    return `${d}/${m}/${y}`;
   }
+
+  // Helper: Parse DD/MM/YYYY string to Date object
+  function parseDMYToDate(str) {
+    if (!str) return null;
+    const parts = str.split('/');
+    if (parts.length !== 3) return null;
+    const d = parseInt(parts[0], 10);
+    const m = parseInt(parts[1], 10) - 1;
+    const y = parseInt(parts[2], 10);
+    if (isNaN(d) || isNaN(m) || isNaN(y)) return null;
+    const date = new Date(y, m, d);
+    if (date.getDate() !== d || date.getMonth() !== m || date.getFullYear() !== y) return null;
+    return date;
+  }
+
+  // Load Flatpickr dynamically from CDN (Progressive Enhancement)
+  function loadFlatpickr(callback) {
+    if (typeof flatpickr !== 'undefined') {
+      callback();
+      return;
+    }
+    
+    // Load CSS
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css';
+    document.head.appendChild(link);
+    
+    // Load JS
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/flatpickr';
+    script.onload = callback;
+    script.onerror = () => {
+      console.log('Flatpickr load failed, using native text date inputs.');
+      initializeFallbackInputs();
+    };
+    document.body.appendChild(script);
+  }
+
+  // Set default values (Check-in = tomorrow, Check-out = 3 days after tomorrow)
+  const defaultCheckIn = new Date();
+  defaultCheckIn.setDate(defaultCheckIn.getDate() + 1);
+  const defaultCheckOut = new Date();
+  defaultCheckOut.setDate(defaultCheckOut.getDate() + 4);
+
+  const initValues = () => {
+    const checkInStr = formatDateToDMY(defaultCheckIn);
+    const checkOutStr = formatDateToDMY(defaultCheckOut);
+    if (checkInInput) checkInInput.value = checkInStr;
+    if (checkOutInput) checkOutInput.value = checkOutStr;
+    if (modalCheckIn) modalCheckIn.value = checkInStr;
+    if (modalCheckOut) modalCheckOut.value = checkOutStr;
+    calculateNightsAndPrice();
+  };
+
+  // ── Mode A: Initialize Flatpickr ──
+  function initializeFlatpickr() {
+    const fpConfig = {
+      dateFormat: "d/m/Y",
+      minDate: "today",
+      allowInput: true,
+      onChange: function() {
+        calculateNightsAndPrice();
+      }
+    };
+
+    const cInInstance = flatpickr("#check-in", {
+      ...fpConfig,
+      defaultDate: defaultCheckIn,
+      onClose: function(selectedDates) {
+        if (selectedDates[0]) {
+          const nextDay = new Date(selectedDates[0]);
+          nextDay.setDate(nextDay.getDate() + 1);
+          if (cOutInstance) cOutInstance.set("minDate", nextDay);
+          if (mOutInstance) mOutInstance.set("minDate", nextDay);
+          
+          // Sync with modal check-in
+          if (mInInstance) mInInstance.setDate(selectedDates[0]);
+        }
+      }
+    });
+
+    const cOutInstance = flatpickr("#check-out", {
+      ...fpConfig,
+      defaultDate: defaultCheckOut
+    });
+
+    const mInInstance = flatpickr("#modal-check-in", {
+      ...fpConfig,
+      defaultDate: defaultCheckIn,
+      onClose: function(selectedDates) {
+        if (selectedDates[0]) {
+          const nextDay = new Date(selectedDates[0]);
+          nextDay.setDate(nextDay.getDate() + 1);
+          if (cOutInstance) cOutInstance.set("minDate", nextDay);
+          if (mOutInstance) mOutInstance.set("minDate", nextDay);
+          
+          // Sync with booking bar check-in
+          if (cInInstance) cInInstance.setDate(selectedDates[0]);
+        }
+      }
+    });
+
+    const mOutInstance = flatpickr("#modal-check-out", {
+      ...fpConfig,
+      defaultDate: defaultCheckOut
+    });
+    
+    // Recalculate initially
+    calculateNightsAndPrice();
+  }
+
+  // ── Mode B: Fallback Text Input Mask & Validation (Offline) ──
+  function initializeFallbackInputs() {
+    initValues();
+
+    const addInputMask = (input, isCheckOut) => {
+      if (!input) return;
+      
+      input.addEventListener('input', () => {
+        let val = input.value.replace(/\D/g, ''); // Digits only
+        if (val.length > 8) val = val.substring(0, 8);
+        
+        let formatted = '';
+        if (val.length > 0) formatted += val.substring(0, 2);
+        if (val.length > 2) formatted += '/' + val.substring(2, 4);
+        if (val.length > 4) formatted += '/' + val.substring(4, 8);
+        
+        input.value = formatted;
+      });
+
+      input.addEventListener('blur', () => {
+        let parsed = parseDMYToDate(input.value);
+        const today = new Date();
+        today.setHours(0,0,0,0);
+
+        if (!parsed || parsed < today) {
+          // Reset to default
+          const fallbackDate = new Date();
+          fallbackDate.setDate(fallbackDate.getDate() + (isCheckOut ? 4 : 1));
+          input.value = formatDateToDMY(fallbackDate);
+          parsed = fallbackDate;
+        }
+
+        // Validate date order
+        if (!isCheckOut) {
+          // Check-in changed, verify check-out is after check-in
+          const otherInput = input.id.includes('modal') ? modalCheckOut : checkOutInput;
+          const otherDate = parseDMYToDate(otherInput.value);
+          if (!otherDate || otherDate <= parsed) {
+            const nextDay = new Date(parsed);
+            nextDay.setDate(nextDay.getDate() + 1);
+            otherInput.value = formatDateToDMY(nextDay);
+          }
+          // Sync check-in value
+          const partnerIn = input.id.includes('modal') ? checkInInput : modalCheckIn;
+          if (partnerIn) partnerIn.value = input.value;
+        } else {
+          // Check-out changed
+          const otherInput = input.id.includes('modal') ? modalCheckIn : checkInInput;
+          const otherDate = parseDMYToDate(otherInput.value);
+          if (otherDate && parsed <= otherDate) {
+            const nextDay = new Date(otherDate);
+            nextDay.setDate(nextDay.getDate() + 1);
+            input.value = formatDateToDMY(nextDay);
+          }
+          // Sync check-out value
+          const partnerOut = input.id.includes('modal') ? checkOutInput : modalCheckOut;
+          if (partnerOut) partnerOut.value = input.value;
+        }
+        calculateNightsAndPrice();
+      });
+    };
+
+    addInputMask(checkInInput, false);
+    addInputMask(checkOutInput, true);
+    addInputMask(modalCheckIn, false);
+    addInputMask(modalCheckOut, true);
+  }
+
+  // Load and start
+  loadFlatpickr(initializeFlatpickr);
 
   // --- GUEST STEPPER LOGIC ---
   const adultsVal = document.getElementById('adults-val');
   const childrenVal = document.getElementById('children-val');
-  const adultsCount = document.getElementById('adults-count');
-  const childrenCount = document.getElementById('children-count');
 
   const setupStepper = (minusBtnId, plusBtnId, countSpanId, inputHiddenId, min, max) => {
     const minus = document.getElementById(minusBtnId);
@@ -93,10 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const bookingModal = document.getElementById('booking-modal');
   const modalClose = document.getElementById('modal-close');
   const modalCancel = document.getElementById('modal-cancel');
-  
-  // Modal Fields to fill from booking bar
-  const modalCheckIn = document.getElementById('modal-check-in');
-  const modalCheckOut = document.getElementById('modal-check-out');
   const modalAdults = document.getElementById('modal-adults');
   const modalChildren = document.getElementById('modal-children');
   const modalRoomType = document.getElementById('modal-room-type');
@@ -115,6 +267,14 @@ document.addEventListener('DOMContentLoaded', () => {
       const barRoomSelect = document.getElementById('room-type');
       if (barRoomSelect && modalRoomType) {
         modalRoomType.value = barRoomSelect.value;
+      }
+
+      // Sync Flatpickr dates if active
+      if (document.getElementById('modal-check-in')._flatpickr) {
+        document.getElementById('modal-check-in')._flatpickr.setDate(parseDMYToDate(checkInInput.value));
+      }
+      if (document.getElementById('modal-check-out')._flatpickr) {
+        document.getElementById('modal-check-out')._flatpickr.setDate(parseDMYToDate(checkOutInput.value));
       }
 
       calculateNightsAndPrice();
@@ -183,8 +343,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!checkInVal || !checkOutVal) return;
 
-    const checkIn = new Date(checkInVal);
-    const checkOut = new Date(checkOutVal);
+    const checkIn = parseDMYToDate(checkInVal);
+    const checkOut = parseDMYToDate(checkOutVal);
+
+    if (!checkIn || !checkOut || checkOut <= checkIn) return;
 
     const diffTime = Math.abs(checkOut - checkIn);
     const diffNights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -201,22 +363,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Handle value change inside modal to recalculate price dynamically
-  if (modalCheckIn) modalCheckIn.addEventListener('change', () => {
-    const checkInVal = new Date(modalCheckIn.value);
-    const minCheckOutDate = new Date(checkInVal);
-    minCheckOutDate.setDate(minCheckOutDate.getDate() + 1);
-    
-    if (modalCheckOut) {
-      modalCheckOut.min = minCheckOutDate.toISOString().split('T')[0];
-      if (new Date(modalCheckOut.value) <= checkInVal) {
-        modalCheckOut.value = minCheckOutDate.toISOString().split('T')[0];
-      }
-    }
-    calculateNightsAndPrice();
-  });
-  
-  if (modalCheckOut) modalCheckOut.addEventListener('change', calculateNightsAndPrice);
   if (modalRoomType) modalRoomType.addEventListener('change', calculateNightsAndPrice);
 
   // --- SUBMIT MODAL RESERVATION ---
