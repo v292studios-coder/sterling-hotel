@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Details | Sterling Hotels and Resorts</title>
+  <meta name="description" content="View absolute details, dimensions, specs, and complete luxury features of our premier guest rooms and suites.">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <style>
+    /* Custom room detail specific styling */
+    .detail-layout {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr;
+      gap: var(--sp-12);
+      align-items: start;
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--sp-8);
+    }
+    .spec-table td {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--clr-cream);
+      font-size: var(--fs-base);
+    }
+    .spec-table td:first-child {
+      font-weight: 500;
+      color: var(--clr-stone);
+      width: 40%;
+    }
+    .spec-table td:last-child {
+      color: var(--clr-dark);
+    }
+    .booking-sidebar {
+      background: var(--clr-white);
+      border: 1px solid var(--clr-cream);
+      padding: 32px;
+      position: sticky;
+      top: 100px;
+      box-shadow: var(--shadow-sm);
+    }
+    .room-gallery-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: var(--sp-10);
+    }
+    .room-gallery-grid div {
+      overflow: hidden;
+      cursor: pointer;
+    }
+    .room-gallery-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+    .room-gallery-grid div:hover img {
+      transform: scale(1.04);
+    }
+    .room-gallery-grid div:first-child {
+      grid-row: 1 / -1;
+      height: 440px;
+    }
+    .room-gallery-grid div:not(:first-child) {
+      height: 214px;
+    }
+    @media (max-width: 900px) {
+      .detail-layout { grid-template-columns: 1fr; }
+      .booking-sidebar { position: static; margin-top: var(--sp-8); }
+      .room-gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .room-gallery-grid div:first-child, .room-gallery-grid div:not(:first-child) { height: 260px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">STERLING</span>
+        <span class="nav__logo-sub">HOTELS & RESORTS</span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+        <a href="dining.html" class="nav__link">Dining</a>
+        <a href="experiences.html" class="nav__link">Experiences</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="about.html" class="nav__link">Our Story</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__cta open-booking-modal">Book Now</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile">
+    <button class="nav__mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+    <a href="dining.html" class="nav__link">Dining</a>
+    <a href="experiences.html" class="nav__link">Experiences</a>
+    <a href="events.html" class="nav__link">Events</a>
+    <a href="gallery.html" class="nav__link">Gallery</a>
+    <a href="about.html" class="nav__link">Our Story</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+    <button class="nav__cta open-booking-modal">Book Now</button>
+  </div>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="page-hero__bg">
+      <img id="detail-hero-img" src="assets/images/room-deluxe.webp" alt="Luxury Sanctuary Interior">
+    </div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="page-hero__breadcrumb">
+        <a href="index.html">Home</a>
+        <span>&middot;</span>
+        <a href="rooms.html">Rooms & Suites</a>
+        <span>&middot;</span>
+        <span id="breadcrumb-room-name">Deluxe Garden Room</span>
+      </div>
+      <h1 class="page-hero__title" id="detail-title">Deluxe Garden Room</h1>
+    </div>
+  </header>
+
+  <!-- Main Details Section -->
+  <section class="section">
+    <div class="container">
+      
+      <div class="detail-layout">
+        
+        <!-- Left Side: Images & Info -->
+        <div>
+          <!-- Photo Gallery Grid -->
+          <div class="room-gallery-grid fade-up" id="detail-gallery">
+            <div>
+              <img id="gallery-img-1" src="assets/images/room-deluxe.webp" alt="Guestroom bed view">
+            </div>
+            <div>
+              <img id="gallery-img-2" src="assets/images/room-suite.webp" alt="Guestroom workspace desk">
+            </div>
+            <div>
+              <img id="gallery-img-3" src="assets/images/hero-main.webp" alt="Guestroom marble bathroom shower">
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="fade-up" style="margin-bottom: var(--sp-10);">
+            <span class="label-tag">Accommodations Description</span>
+            <h2 class="text-dark" style="margin-bottom: var(--sp-4);">Refined Privacy & Comfort</h2>
+            <div class="gold-divider"></div>
+            <p id="detail-desc" style="font-size: 1.1rem; margin-bottom: 24px;">Our Deluxe Garden Rooms represent the ultimate combination of modern architectural layout and warm botanical visuals. Opening out onto private terraces facing the historic property boundaries, each space offers a private respite from the outside world.</p>
+            <p style="margin-bottom: 24px;">Fitted with signature Italian linens, customized soundproofing, touch-based ambient control buttons, and masterfully crafted furniture by local woodworkers. The en-suite bathroom includes heated stone flooring, a deep copper soaking tub, and custom essential oils curated for the hotel.</p>
+          </div>
+
+          <!-- Specifications Table -->
+          <div class="fade-up" style="margin-bottom: var(--sp-10);">
+            <h3 class="text-dark" style="margin-bottom: var(--sp-4);">Room Specifications</h3>
+            <table class="spec-table">
+              <tr>
+                <td>Room Size</td>
+                <td id="spec-size">450 sqft / 42 sqm</td>
+              </tr>
+              <tr>
+                <td>Max Occupancy</td>
+                <td id="spec-guests">2 Adults</td>
+              </tr>
+              <tr>
+                <td>Bed Configuration</td>
+                <td id="spec-bed">1 King Bed (Signature Linen)</td>
+              </tr>
+              <tr>
+                <td>View</td>
+                <td id="spec-view">Lush Landscaped Botanical Gardens</td>
+              </tr>
+              <tr>
+                <td>Extra Bedding</td>
+                <td id="spec-extra">Baby Crib available upon request</td>
+              </tr>
+            </table>
+          </div>
+
+          <!-- In-room Amenities -->
+          <div class="fade-up">
+            <h3 class="text-dark" style="margin-bottom: var(--sp-6);">Included Services</h3>
+            <div class="grid grid-3">
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">☕</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">Espresso Machine</h6>
+                  <p style="font-size: var(--fs-xs);">Bespoke coffee capsules replenished daily.</p>
+                </div>
+              </div>
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">📶</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">High-Speed Wi-Fi</h6>
+                  <p style="font-size: var(--fs-xs);">Complimentary gigabit connections throughout resort.</p>
+                </div>
+              </div>
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">🍷</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">Gourmet Mini-Bar</h6>
+                  <p style="font-size: var(--fs-xs);">Curated regional wines and healthy snacks.</p>
+                </div>
+              </div>
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">🛁</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">Luxury Bathrobes</h6>
+                  <p style="font-size: var(--fs-xs);">Plush Egyptian cotton wraps and slippers.</p>
+                </div>
+              </div>
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">🧺</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">Laundry Service</h6>
+                  <p style="font-size: var(--fs-xs);">Valet cleaning and shoe polishing service.</p>
+                </div>
+              </div>
+              <div class="flex" style="gap: 12px; align-items: start;">
+                <span class="text-gold" style="font-size: 20px;">🔒</span>
+                <div>
+                  <h6 class="text-dark" style="margin-bottom: 4px;">In-Room Safe</h6>
+                  <p style="font-size: var(--fs-xs);">Spacious electronic locker with internal charger.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Side: Booking Sidebar Widget -->
+        <aside class="booking-sidebar fade-up stagger-1">
+          <h3 class="text-dark" style="margin-bottom: 6px;">Reserve Sanctuary</h3>
+          <p style="font-size: var(--fs-sm); margin-bottom: 24px;">Rate starts from <strong id="sidebar-price-rate">$450</strong> / night.</p>
+          
+          <button class="btn btn--gold open-booking-modal" id="sidebar-book-btn" style="width: 100%; justify-content: center; margin-bottom: 16px;">Request Reservation</button>
+          
+          <div class="divider" style="margin-block: 20px;"></div>
+          
+          <h5 class="text-dark" style="margin-bottom: 12px;">Exclusive Member Offers</h5>
+          <ul style="font-size: var(--fs-xs); display: flex; flex-direction: column; gap: 8px;">
+            <li class="flex" style="gap: 8px;"><span class="text-gold">✓</span> Complimentary Airport Limo Transfer</li>
+            <li class="flex" style="gap: 8px;"><span class="text-gold">✓</span> Priority Booking on Spa & Michelin dining</li>
+            <li class="flex" style="gap: 8px;"><span class="text-gold">✓</span> Early Check-In & Late Check-Out (subject to room availability)</li>
+          </ul>
+        </aside>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div>
+        <div class="footer__brand-name">STERLING</div>
+        <div class="footer__brand-sub">HOTELS & RESORTS</div>
+        <p class="footer__brand-desc">A five-star luxury resort combining modern minimalism with timeless hospitality, creating a sanctuary of quiet comfort.</p>
+        <p class="footer__brand-desc" style="margin-top:12px; font-size:var(--fs-xs);">📍 Vattekattu Junction, Kaloor &ndash; Kadavanthara Rd,<br>Kathrikadavu, Kochi, Kerala 682017, India<br><a href="https://www.google.com/maps/place/C+J+Grande+by+Jesway+Hotels+and+Resorts/@9.9884262,76.2931021,17z" target="_blank" rel="noopener" style="color:var(--clr-gold);text-decoration:none;font-size:var(--fs-xs);">🗺 Open in Google Maps &rarr;</a></p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="footer__social-link" aria-label="Pinterest">PI</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Explore</h3>
+        <ul class="footer__links">
+          <li><a href="rooms.html" class="footer__link">Rooms & Suites</a></li>
+          <li><a href="dining.html" class="footer__link">Dining Venues</a></li>
+          <li><a href="experiences.html" class="footer__link">Spa & Wellness</a></li>
+          <li><a href="events.html" class="footer__link">Weddings & Meetings</a></li>
+          <li><a href="gallery.html" class="footer__link">Photo Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Heritage</h3>
+        <ul class="footer__links">
+          <li><a href="about.html" class="footer__link">Our Philosophy</a></li>
+          <li><a href="about.html" class="footer__link">Awards & Reviews</a></li>
+          <li><a href="contact.html" class="footer__link">Location Map</a></li>
+          <li><a href="contact.html" class="footer__link">Directions Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Newsletter</h3>
+        <p class="footer__brand-desc" style="margin-bottom: 12px;">Subscribe for exclusive offers and private member invitations.</p>
+        <form class="footer__newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter.');">
+          <input type="email" placeholder="Your email address" class="footer__newsletter-input" required>
+          <button type="submit" class="footer__newsletter-btn">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span class="footer__copy">&copy; 2026 Sterling Hotels and Resorts. All Rights Reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal__header">
+        <div>
+          <h2 class="modal__title">Reservation Inquiry</h2>
+          <span class="modal__subtitle">Sterling Luxury Suite Booking</span>
+        </div>
+        <button id="modal-close" class="modal__close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body">
+        <form id="modal-booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-check-in" class="form-label">Check In</label>
+              <input type="date" id="modal-check-in" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="modal-check-out" class="form-label">Check Out</label>
+              <input type="date" id="modal-check-out" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <select id="modal-room-type" class="form-select">
+                <option value="deluxe">Deluxe Garden Room ($450/n)</option>
+                <option value="premier">Premier Room ($650/n)</option>
+                <option value="suite">Executive Ocean Suite ($1,200/n)</option>
+                <option value="penthouse">Sterling Penthouse ($2,500/n)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom: 0;">
+              <div class="form-group">
+                <label for="modal-adults" class="form-label">Adults</label>
+                <select id="modal-adults" class="form-select">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="modal-children" class="form-label">Children</label>
+                <select id="modal-children" class="form-select">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="divider" style="margin-block: 24px;"></div>
+          <div class="form-group form-group--full">
+            <label for="guest-name" class="form-label">Full Name</label>
+            <input type="text" id="guest-name" class="form-input" placeholder="e.g., Alexander Mercer" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guest-email" class="form-label">Email Address</label>
+              <input type="email" id="guest-email" class="form-input" placeholder="e.g., alex@luxury.com" required>
+            </div>
+            <div class="form-group">
+              <label for="guest-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="guest-phone" class="form-input" placeholder="e.g., +1 (555) 019-2834" required>
+            </div>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="guest-requests" class="form-label">Special Requests / Preferences</label>
+            <textarea id="guest-requests" class="form-textarea" placeholder="e.g., feather-free pillows, airport pickup request..."></textarea>
+          </div>
+          <div class="modal__total">
+            <div>
+              <span class="modal__total-label">Estimated Stay Total</span>
+              <div class="modal__total-nights" id="total-nights">1 Night</div>
+            </div>
+            <div class="modal__total-price" id="total-price">$450</div>
+          </div>
+          <div class="flex-between">
+            <button type="button" id="modal-cancel" class="btn btn--outline-dark" style="padding: 12px 24px;">Cancel</button>
+            <button type="submit" class="btn btn--gold" style="padding: 12px 36px;">Request Stay</button>
+          </div>
+        </form>
+        <!-- Success Message -->
+        <div class="modal__success">
+          <div class="modal__success-icon">✨</div>
+          <h2 class="text-dark">Stay Requested</h2>
+          <div class="gold-divider gold-divider--center"></div>
+          <p style="margin-bottom: 24px;">Thank you for choosing Sterling Hotels and Resorts. Our personal concierge will reach out to you within 2 hours to confirm your booking and arrange your custom itinerary.</p>
+          <div style="background: var(--clr-ivory); padding: 16px; display: inline-block;">
+            <span class="label-tag" style="display: block; font-size: 10px; margin-bottom: 4px;">Confirmation Code</span>
+            <strong id="confirmation-code" style="font-size: 18px; letter-spacing: 0.08em; color: var(--clr-gold-dk);">ST-PENDING</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox">
+    <button id="lightbox-close" class="lightbox__close" aria-label="Close image gallery">&times;</button>
+    <button id="lightbox-prev" class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&lsaquo;</button>
+    <img id="lightbox-img" src="" alt="" class="lightbox__img">
+    <button id="lightbox-next" class="lightbox__nav lightbox__nav--next" aria-label="Next image">&rsaquo;</button>
+    <div id="lightbox-caption" class="lightbox__caption">Gallery Preview</div>
+  </div>
+
+  <!-- Script to update values dynamically based on URL parameter -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const room = params.get('room') || 'deluxe';
+
+      const roomsData = {
+        'deluxe': {
+          title: 'Deluxe Garden Room',
+          price: '$450',
+          desc: 'Our Deluxe Garden Rooms represent the ultimate combination of modern architectural layout and warm botanical visuals. Opening out onto private terraces facing the historic property boundaries, each space offers a private respite from the outside world.',
+          size: '450 sqft / 42 sqm',
+          guests: '2 Adults',
+          bed: '1 King Bed (Signature Linen)',
+          view: 'Lush Landscaped Botanical Gardens',
+          extra: 'Baby Crib available upon request',
+          hero: 'assets/images/room-deluxe.webp',
+          img1: 'assets/images/room-deluxe.webp',
+          img2: 'assets/images/room-suite.webp',
+          img3: 'assets/images/hero-main.webp'
+        },
+        'premier': {
+          title: 'Premier Ocean Room',
+          price: '$650',
+          desc: 'Enjoy front-row ocean views from the Premier Ocean Room. With spacious layouts, floor-to-ceiling double-glazed windows, and automated light and shade systems, you can watch the sunrise from the luxury of your bed.',
+          size: '550 sqft / 51 sqm',
+          guests: '2 Adults',
+          bed: '1 King Bed or 2 Twin Beds',
+          view: 'Stunning Panoramas of the Deep Ocean',
+          extra: 'One extra single bed can be set up',
+          hero: 'assets/images/room-suite.webp',
+          img1: 'assets/images/room-suite.webp',
+          img2: 'assets/images/room-deluxe.webp',
+          img3: 'assets/images/pool.webp'
+        },
+        'suite': {
+          title: 'Executive Ocean Suite',
+          price: '$1,200',
+          desc: 'The Executive Ocean Suite offers separated living and sleeping zones. Featuring double private balconies, walk-in closets, marble en-suite bathrooms, and specialized services, it represents the absolute pinnacle of coastal comfort.',
+          size: '850 sqft / 79 sqm',
+          guests: '3 Adults',
+          bed: '1 Grand King Bed + 1 Rollaway Couch',
+          view: 'Panoramic Ocean Views',
+          extra: 'Included personal butler service 24/7',
+          hero: 'assets/images/room-suite.webp',
+          img1: 'assets/images/room-suite.webp',
+          img2: 'assets/images/room-deluxe.webp',
+          img3: 'assets/images/hero-main.webp'
+        },
+        'penthouse': {
+          title: 'The Sterling Penthouse',
+          price: '$2,500',
+          desc: 'The absolute jewel of our accommodations. The Sterling Penthouse takes over the top floor, hosting a bespoke bar, outdoor pool, grand piano, and curated original paintings. Ideal for VIP events and private retreats.',
+          size: '2,400 sqft / 223 sqm',
+          guests: '4 Adults',
+          bed: '2 Grand King Beds (En-Suite Bathrooms)',
+          view: 'Glittering Ocean and Horizon Skyline Views',
+          extra: 'Private cocktail bar and customized chef menus',
+          hero: 'assets/images/hero-main.webp',
+          img1: 'assets/images/hero-main.webp',
+          img2: 'assets/images/room-suite.webp',
+          img3: 'assets/images/pool.webp'
+        }
+      };
+
+      const selected = roomsData[room] || roomsData.deluxe;
+
+      // Update DOM
+      document.getElementById('breadcrumb-room-name').textContent = selected.title;
+      document.getElementById('detail-title').textContent = selected.title;
+      document.getElementById('detail-desc').textContent = selected.desc;
+      document.getElementById('spec-size').textContent = selected.size;
+      document.getElementById('spec-guests').textContent = selected.guests;
+      document.getElementById('spec-bed').textContent = selected.bed;
+      document.getElementById('spec-view').textContent = selected.view;
+      document.getElementById('spec-extra').textContent = selected.extra;
+      document.getElementById('sidebar-price-rate').textContent = selected.price;
+
+      // Update Images
+      document.getElementById('detail-hero-img').src = selected.hero;
+      document.getElementById('gallery-img-1').src = selected.img1;
+      document.getElementById('gallery-img-2').src = selected.img2;
+      document.getElementById('gallery-img-3').src = selected.img3;
+
+      // Set sidebar button attribute to book this room
+      document.getElementById('sidebar-book-btn').setAttribute('data-room', room);
+    });
+  </script>
+  
+  <!-- JS Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

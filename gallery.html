@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery | Sterling Hotels and Resorts</title>
+  <meta name="description" content="Browse the Sterling Hotels and Resorts photo gallery — rooms, dining, events, and breathtaking exterior views.">
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+  <style>
+    .gallery-grid {
+      columns: 3;
+      column-gap: 12px;
+    }
+    .gallery-grid__item {
+      break-inside: avoid;
+      margin-bottom: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-grid__item img {
+      width: 100%;
+      display: block;
+      transition: transform 0.6s var(--ease);
+    }
+    .gallery-grid__item:hover img { transform: scale(1.05); }
+    .gallery-grid__item .gallery-strip__overlay { position: absolute; inset: 0; background: rgba(26,22,18,0); display: flex; align-items: center; justify-content: center; transition: background 0.4s; }
+    .gallery-grid__item:hover .gallery-strip__overlay { background: rgba(26,22,18,0.35); }
+    .gallery-grid__item .gallery-strip__icon { color: var(--clr-white); font-size: 28px; opacity: 0; transform: scale(0.7); transition: all 0.3s; }
+    .gallery-grid__item:hover .gallery-strip__icon { opacity: 1; transform: scale(1); }
+    @media (max-width: 768px) { .gallery-grid { columns: 2; } }
+    @media (max-width: 480px) { .gallery-grid { columns: 1; } }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">STERLING</span>
+        <span class="nav__logo-sub">HOTELS & RESORTS</span>
+      </a>
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+        <a href="dining.html" class="nav__link">Dining</a>
+        <a href="experiences.html" class="nav__link">Experiences</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="about.html" class="nav__link">Our Story</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__cta open-booking-modal">Book Now</button>
+      </div>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile">
+    <button class="nav__mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+    <a href="dining.html" class="nav__link">Dining</a>
+    <a href="experiences.html" class="nav__link">Experiences</a>
+    <a href="events.html" class="nav__link">Events</a>
+    <a href="gallery.html" class="nav__link">Gallery</a>
+    <a href="about.html" class="nav__link">Our Story</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+    <button class="nav__cta open-booking-modal">Book Now</button>
+  </div>
+
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="page-hero__bg">
+      <img src="assets/images/hero-main.webp" alt="Sterling Hotels and Resorts exterior at dusk">
+    </div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="page-hero__breadcrumb">
+        <a href="index.html">Home</a>
+        <span>&middot;</span>
+        <span>Gallery</span>
+      </div>
+      <h1 class="page-hero__title">Through Our Lens</h1>
+    </div>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Section Header -->
+      <div class="section-header section-header--center">
+        <span class="label-tag">Visual Stories</span>
+        <h2 class="text-dark">Moments of Sterling Luxury</h2>
+        <div class="gold-divider gold-divider--center"></div>
+        <p style="max-width: 560px; margin-inline: auto;">A curated collection of photography from across our property — from elegant dining venues to sun-drenched terraces.</p>
+      </div>
+
+            <!-- Filter Bar -->
+      <div class="filter-bar text-center" style="justify-content: center; margin-bottom: var(--sp-10); flex-wrap: wrap; gap: 8px;">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="room">Room</button>
+        <button class="filter-btn" data-filter="outdoors">Outdoors</button>
+        <button class="filter-btn" data-filter="facade">Facade</button>
+        <button class="filter-btn" data-filter="washroom">Washroom</button>
+        <button class="filter-btn" data-filter="reception">Reception</button>
+        <button class="filter-btn" data-filter="common-area">Common Area</button>
+        <button class="filter-btn" data-filter="parking">Parking</button>
+        <button class="filter-btn" data-filter="restaurant">Restaurant</button>
+      </div>      <!-- Masonry Gallery Grid -->
+      <div class="gallery-grid fade-up">
+
+        <!-- Image 1: 01JE5S5MPE37PE13TB0V0G9946.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-1.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 1">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 2: 01JE5SCBYX6Z10E7JW92MHS0D8.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-2.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 2">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 3: 01JSV2PE0EH3SGQT0R7S5K9306.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-3.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 3">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 4: 01JSV2PE2V4GVYGH8A1ZSPBPSS.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-4.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 4">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 5: 01K0VRQSRSBFEHHVTASA0DFH6D.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-5.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 5">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 6: 01K6AV5KMYWR2JR37EEBMXKS67.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-6.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 6">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 7: 01K6AV5KST3E7T7KFNZWD9FK27.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-7.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 7">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 8: 01K6AV5M0QVS00HR6FCSFN8TKX.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-8.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 8">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 9: 01K6AV5M58XAQNCE3KRX1PXXFW.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-9.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 9">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 10: 01K6W2FABMX8XHVZYW9HVG7F6C.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-10.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 10">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 11: 01K6W2FAEN28TGRJQ0A3QBYRVT.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-11.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 11">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 12: 01K6ZH7374T7JAYZ8SPQ41BWRN.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-12.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 12">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 13: 01K6ZH73B8P850H4VCN906AWQX.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-13.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 13">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 14: 01K6ZH73EF8DES6TW7561N0W1S.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-14.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 14">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 15: 01K741NYQAXYAKZXGDSXE8D3F3.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-15.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 15">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 16: 01K741NYT9G4F95HG19Z0QQCP0.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-16.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 16">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 17: 01K741NYX6AZADNE949Y4MHBY7.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-17.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 17">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 18: 1000015426.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-18.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 18">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 19: 1000521989.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-19.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 19">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 20: 1000521990.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-20.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 20">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 21: 1d82c81a958e11eebd5e0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-21.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 21">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 22: 1d9b5060958e11eeb08d0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-22.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 22">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 23: 1db9df76958e11eeb35f0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-23.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 23">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 24: 1dc3455c958e11eeaa070a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-24.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 24">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 25: 1de783f4958e11ee88ae0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-25.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 25">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 26: 202208181901272064-a592ed0e-64a3-407a-b012-3be3025b3283.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-26.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 26">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 28: 23b7a77c958a11ee83c40a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-28.avif" alt="Refined guest lounge and common sitting area - Image 28">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 29: 23cbbb18958a11ee91000a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-29.jpg" alt="Refined guest lounge and common sitting area - Image 29">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 30: 240276d0958a11ee91a00a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="reception">
+          <img src="assets/images/gallery/hg-30.avif" alt="Stunning hotel lobby reception desk area - Image 30">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 31: 284bf346958b11eeb5c70a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-31.avif" alt="Refined guest lounge and common sitting area - Image 31">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 32: 2a27e388958a11eeb08d0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="reception">
+          <img src="assets/images/gallery/hg-32.jpg" alt="Stunning hotel lobby reception desk area - Image 32">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 33: 4175330e958c11eea9e80a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="outdoors">
+          <img src="assets/images/gallery/hg-33.jpg" alt="Lush landscaping and scenic outdoor garden view - Image 33">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 34: 4195df00958c11eebd5e0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="outdoors">
+          <img src="assets/images/gallery/hg-34.avif" alt="Lush landscaping and scenic outdoor garden view - Image 34">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 35: 41a05606958c11ee83c40a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="outdoors">
+          <img src="assets/images/gallery/hg-35.avif" alt="Lush landscaping and scenic outdoor garden view - Image 35">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 36: 41ca6e96958c11eea5750a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="facade">
+          <img src="assets/images/gallery/hg-36.avif" alt="Grand exterior facade architecture at dusk - Image 36">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 37: 41de9e52958c11eea6530a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="facade">
+          <img src="assets/images/gallery/hg-37.jpg" alt="Grand exterior facade architecture at dusk - Image 37">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 38: 453b7000958e11eeb08d0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-38.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 38">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 39: 455146aa958e11eea5750a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-39.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 39">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 40: 4563bd62958e11eeb5c70a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-40.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 40">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 41: 45871c30958e11ee88ae0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-41.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 41">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 42: 6021a054958b11eea9e80a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-42.jpg" alt="Refined guest lounge and common sitting area - Image 42">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 43: 6057c288958b11ee83c40a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-43.jpg" alt="Refined guest lounge and common sitting area - Image 43">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 44: 60769578958b11eeb5c70a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-44.jpg" alt="Refined guest lounge and common sitting area - Image 44">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 45: 6de9e67a958a11ee83c40a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-45.jpg" alt="Refined guest lounge and common sitting area - Image 45">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 46: 6df506d6958a11eebf5d0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-46.avif" alt="Refined guest lounge and common sitting area - Image 46">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 47: 6e28534c958a11ee91cf0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="common-area">
+          <img src="assets/images/gallery/hg-47.jpg" alt="Refined guest lounge and common sitting area - Image 47">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 48: 7f523a6a958b11eeb35f0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-48.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 48">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 49: 7fa717ba958b11ee9ea10a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-49.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 49">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 50: Screenshot_20240213_091033_Gallery.avif -->
+        <div class="gallery-grid__item" data-category="outdoors">
+          <img src="assets/images/gallery/hg-50.avif" alt="Lush landscaping and scenic outdoor garden view - Image 50">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 51: Screenshot_20240213_091227_Video Player.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-51.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 51">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 52: Screenshot_20240213_091621_Video Player.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-52.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 52">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 53: bc7a8b80959111ee9baf0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="restaurant">
+          <img src="assets/images/gallery/hg-53.avif" alt="Upscale fine dining restaurant interior and table settings - Image 53">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 54: bcba12be959111eea6530a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="restaurant">
+          <img src="assets/images/gallery/hg-54.jpg" alt="Upscale fine dining restaurant interior and table settings - Image 54">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 55: cf2b8f0a958b11ee88ae0a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="washroom">
+          <img src="assets/images/gallery/hg-55.avif" alt="Modern elegant bathroom design with luxury fittings - Image 55">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 56: cf3407b6958b11ee91a00a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="parking">
+          <img src="assets/images/gallery/hg-56.avif" alt="Secure and spacious guest parking area - Image 56">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 57: cf653a70958b11eeb35f0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-57.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 57">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 58: cf71ed2e958b11ee83c40a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-58.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 58">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 59: dac7b80a958d11ee94540a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-59.avif" alt="Luxury guest room interior showing premium bedding and decor - Image 59">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 60: dae2197a958d11ee88ae0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-60.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 60">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 61: db0c2c1a958d11ee9db30a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-61.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 61">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 62: db229b76958d11ee83c40a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-62.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 62">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 63: f99ac61e958d11ee9baf0a58a9feac02.jpg -->
+        <div class="gallery-grid__item" data-category="room">
+          <img src="assets/images/gallery/hg-63.jpg" alt="Luxury guest room interior showing premium bedding and decor - Image 63">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+
+        <!-- Image 64: f9b5f5b0958d11ee9db30a58a9feac02.avif -->
+        <div class="gallery-grid__item" data-category="washroom">
+          <img src="assets/images/gallery/hg-64.avif" alt="Modern elegant bathroom design with luxury fittings - Image 64">
+          <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+        </div>
+      </div><!-- /gallery-grid -->
+    </div>
+  </section>
+
+  <!-- Offer Strip -->
+  <section class="offer-banner">
+    <div>
+      <div class="offer-banner__label">Experience It First-Hand</div>
+      <h3 class="offer-banner__title">Book your stay and live these moments</h3>
+    </div>
+    <button class="btn btn--dark open-booking-modal">Reserve Your Stay</button>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div>
+        <div class="footer__brand-name">STERLING</div>
+        <div class="footer__brand-sub">HOTELS & RESORTS</div>
+        <p class="footer__brand-desc">A five-star luxury resort combining modern minimalism with timeless hospitality, creating a sanctuary of quiet comfort.</p>
+        <p class="footer__brand-desc" style="margin-top:12px; font-size:var(--fs-xs);">📍 Door no : 43/88, Civil Lane Road,<br>Palarivattom, Ernakulam, Kerala 682025<br><a href="https://www.google.com/maps/search/?api=1&query=KAIFAN+APARTMENT+Pothencode+Andoorkonam+Kerala+695584" target="_blank" rel="noopener" style="color:var(--clr-gold);text-decoration:none;font-size:var(--fs-xs);">🗺 Open in Google Maps &rarr;</a></p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="footer__social-link" aria-label="Pinterest">PI</a>
+        </div>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Explore</h3>
+        <ul class="footer__links">
+          <li><a href="rooms.html" class="footer__link">Rooms & Suites</a></li>
+          <li><a href="dining.html" class="footer__link">Dining Venues</a></li>
+          <li><a href="experiences.html" class="footer__link">Spa & Wellness</a></li>
+          <li><a href="events.html" class="footer__link">Weddings & Meetings</a></li>
+          <li><a href="gallery.html" class="footer__link">Photo Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Heritage</h3>
+        <ul class="footer__links">
+          <li><a href="about.html" class="footer__link">Our Philosophy</a></li>
+          <li><a href="about.html" class="footer__link">Awards & Reviews</a></li>
+          <li><a href="contact.html" class="footer__link">Location Map</a></li>
+          <li><a href="contact.html" class="footer__link">Directions Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer__col-title">Newsletter</h3>
+        <p class="footer__brand-desc" style="margin-bottom: 12px;">Subscribe for exclusive offers and private member invitations.</p>
+        <form class="footer__newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing.');">
+          <input type="email" placeholder="Your email address" class="footer__newsletter-input" required>
+          <button type="submit" class="footer__newsletter-btn">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span class="footer__copy">&copy; 2026 Sterling Hotels and Resorts. All Rights Reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal__header">
+        <div>
+          <h2 class="modal__title">Reservation Inquiry</h2>
+          <span class="modal__subtitle">Sterling Luxury Suite Booking</span>
+        </div>
+        <button id="modal-close" class="modal__close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body">
+        <form id="modal-booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-check-in" class="form-label">Check In</label>
+              <input type="date" id="modal-check-in" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="modal-check-out" class="form-label">Check Out</label>
+              <input type="date" id="modal-check-out" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <select id="modal-room-type" class="form-select">
+                <option value="deluxe">Deluxe Garden Room ($450/n)</option>
+                <option value="premier">Premier Room ($650/n)</option>
+                <option value="suite">Executive Ocean Suite ($1,200/n)</option>
+                <option value="penthouse">Sterling Penthouse ($2,500/n)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom:0;">
+              <div class="form-group">
+                <label for="modal-adults" class="form-label">Adults</label>
+                <select id="modal-adults" class="form-select">
+                  <option>1</option><option selected>2</option><option>3</option><option>4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="modal-children" class="form-label">Children</label>
+                <select id="modal-children" class="form-select">
+                  <option selected>0</option><option>1</option><option>2</option><option>3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="divider" style="margin-block:24px;"></div>
+          <div class="form-group form-group--full">
+            <label for="guest-name" class="form-label">Full Name</label>
+            <input type="text" id="guest-name" class="form-input" placeholder="e.g., Alexander Mercer" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guest-email" class="form-label">Email Address</label>
+              <input type="email" id="guest-email" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="guest-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="guest-phone" class="form-input" required>
+            </div>
+          </div>
+          <div class="form-group form-group--full">
+            <label for="guest-requests" class="form-label">Special Requests</label>
+            <textarea id="guest-requests" class="form-textarea" placeholder="Any preferences or special occasions..."></textarea>
+          </div>
+          <div class="modal__total">
+            <div>
+              <span class="modal__total-label">Estimated Stay Total</span>
+              <div class="modal__total-nights" id="total-nights">1 Night</div>
+            </div>
+            <div class="modal__total-price" id="total-price">$450</div>
+          </div>
+          <div class="flex-between">
+            <button type="button" id="modal-cancel" class="btn btn--outline-dark" style="padding:12px 24px;">Cancel</button>
+            <button type="submit" class="btn btn--gold" style="padding:12px 36px;">Request Stay</button>
+          </div>
+        </form>
+        <div class="modal__success">
+          <div class="modal__success-icon">✨</div>
+          <h2 class="text-dark">Stay Requested</h2>
+          <div class="gold-divider gold-divider--center"></div>
+          <p style="margin-bottom:24px;">Thank you for choosing Sterling Hotels and Resorts. Our concierge will contact you within 2 hours.</p>
+          <div style="background:var(--clr-ivory);padding:16px;display:inline-block;">
+            <span class="label-tag" style="display:block;font-size:10px;margin-bottom:4px;">Confirmation Code</span>
+            <strong id="confirmation-code" style="font-size:18px;letter-spacing:0.08em;color:var(--clr-gold-dk);">ST-PENDING</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <button id="lightbox-close" class="lightbox__close" aria-label="Close">&times;</button>
+    <button id="lightbox-prev" class="lightbox__nav lightbox__nav--prev" aria-label="Previous">&lsaquo;</button>
+    <img id="lightbox-img" src="" alt="" class="lightbox__img">
+    <button id="lightbox-next" class="lightbox__nav lightbox__nav--next" aria-label="Next">&rsaquo;</button>
+    <div id="lightbox-caption" class="lightbox__caption"></div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

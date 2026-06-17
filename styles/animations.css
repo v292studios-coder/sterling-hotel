@@ -1,0 +1,251 @@
+/* ============================================================
+   Sterling Hotels and Resorts — ANIMATIONS
+   Scroll-driven · Parallax · Micro-interactions
+   ============================================================ */
+
+/* ── Keyframes ──────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0); }
+  50%       { box-shadow: 0 0 0 8px rgba(201,169,110,0.12); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@keyframes counterUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scroll-driven base state (hidden before Intersection) ─── */
+.fade-up,
+.fade-in,
+.fade-left,
+.fade-right,
+.scale-in {
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* ── Animated state (applied by IntersectionObserver) ──────── */
+.fade-up.animated {
+  animation: fadeUp var(--dur-slow) var(--ease) both;
+}
+
+.fade-in.animated {
+  animation: fadeIn var(--dur-slow) var(--ease) both;
+}
+
+.fade-left.animated {
+  animation: fadeLeft var(--dur-slow) var(--ease) both;
+}
+
+.fade-right.animated {
+  animation: fadeRight var(--dur-slow) var(--ease) both;
+}
+
+.scale-in.animated {
+  animation: scaleIn var(--dur-slow) var(--ease) both;
+}
+
+/* ── Stagger delays (for grids / lists) ─────────────────────── */
+.stagger-1 { animation-delay: 0.08s !important; }
+.stagger-2 { animation-delay: 0.16s !important; }
+.stagger-3 { animation-delay: 0.24s !important; }
+.stagger-4 { animation-delay: 0.32s !important; }
+.stagger-5 { animation-delay: 0.40s !important; }
+.stagger-6 { animation-delay: 0.48s !important; }
+
+/* ── Hero text entrance ─────────────────────────────────────── */
+.hero__label  { animation: fadeUp 0.8s 0.1s var(--ease) both; }
+.hero__title  { animation: fadeUp 1.0s 0.25s var(--ease) both; }
+.hero__subtitle { animation: fadeUp 0.8s 0.45s var(--ease) both; }
+.hero__actions  { animation: fadeUp 0.8s 0.6s var(--ease) both; }
+.hero__scroll   { animation: fadeIn 1s 1.2s var(--ease) both; }
+
+/* ── Navbar entrance ────────────────────────────────────────── */
+.nav { animation: fadeIn 0.6s 0.1s var(--ease) both; }
+
+/* ── Gold divider animation ─────────────────────────────────── */
+.gold-divider {
+  transform-origin: left;
+}
+
+.gold-divider.animated {
+  animation: lineGrow 0.6s var(--ease) both;
+}
+
+.gold-divider--center {
+  transform-origin: center;
+}
+
+/* ── Card hover effects ─────────────────────────────────────── */
+.room-card {
+  transition:
+    transform var(--dur-base) var(--ease),
+    box-shadow var(--dur-base) var(--ease);
+}
+
+.room-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 32px 80px rgba(26,22,18,0.16);
+}
+
+/* ── Amenity item pulse on hover ────────────────────────────── */
+.amenity-item {
+  transition:
+    background var(--dur-base) var(--ease),
+    transform var(--dur-base) var(--ease);
+}
+
+.amenity-item:hover {
+  transform: translateY(-4px);
+}
+
+/* ── Button ripple effect ────────────────────────────────────── */
+.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s var(--ease), height 0.5s var(--ease);
+}
+
+.btn:active::before {
+  width: 300px;
+  height: 300px;
+}
+
+/* ── Booking bar shimmer (loading state) ─────────────────────── */
+.booking-bar.loading .booking-bar__field-value {
+  background: linear-gradient(90deg, var(--clr-cream) 25%, var(--clr-ivory) 50%, var(--clr-cream) 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite linear;
+  color: transparent;
+  border-radius: 2px;
+}
+
+/* ── Image reveal (zoom-out on load) ────────────────────────── */
+.img-reveal {
+  overflow: hidden;
+}
+
+.img-reveal img {
+  transform: scale(1.08);
+  transition: transform 1.2s var(--ease);
+}
+
+.img-reveal.animated img {
+  transform: scale(1);
+}
+
+/* ── Number counter animation ────────────────────────────────── */
+.counter-value {
+  display: inline-block;
+  transition: opacity 0.3s var(--ease);
+}
+
+/* ── Scroll indicator pulse ─────────────────────────────────── */
+.hero__scroll-line {
+  animation: scrollLine 2s ease-in-out infinite;
+}
+
+/* ── Page transition (applied to body on nav) ───────────────── */
+.page-transition-out {
+  animation: fadeIn 0.3s reverse var(--ease) both;
+}
+
+.page-transition-in {
+  animation: fadeIn 0.4s var(--ease) both;
+}
+
+/* ── Lightbox open/close ─────────────────────────────────────── */
+.lightbox .lightbox__img {
+  animation: scaleIn 0.35s var(--ease) both;
+}
+
+/* ── Modal open animation ────────────────────────────────────── */
+.modal-overlay.open .modal {
+  animation: fadeUp 0.4s var(--ease) both;
+}
+
+/* ── Dot nav active transition ──────────────────────────────── */
+.carousel-dot {
+  transition: width 0.4s var(--ease), background 0.4s var(--ease);
+}
+
+/* ── Reduce motion (accessibility) ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .fade-up,
+  .fade-in,
+  .fade-left,
+  .fade-right,
+  .scale-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero__label,
+  .hero__title,
+  .hero__subtitle,
+  .hero__actions,
+  .hero__scroll {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero__bg img {
+    transform: none !important;
+  }
+}

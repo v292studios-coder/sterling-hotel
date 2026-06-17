@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sterling Hotels and Resorts | 5-Star Luxury Retreat & Spa</title>
+  <meta name="description" content="Experience world-class luxury at Sterling Hotels and Resorts. Unwind in our luxury suites, enjoy fine dining, and recharge at our premium spa. Book your stay today.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/base.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <span class="nav__logo-name">STERLING</span>
+        <span class="nav__logo-sub">HOTELS & RESORTS</span>
+      </a>
+      
+      <div class="nav__links">
+        <a href="index.html" class="nav__link">Home</a>
+        <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+        <a href="dining.html" class="nav__link">Dining</a>
+        <a href="experiences.html" class="nav__link">Experiences</a>
+        <a href="events.html" class="nav__link">Events</a>
+        <a href="gallery.html" class="nav__link">Gallery</a>
+        <a href="about.html" class="nav__link">Our Story</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+        <button class="nav__cta open-booking-modal">Book Now</button>
+      </div>
+
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="nav__mobile">
+    <button class="nav__mobile-close" aria-label="Close menu">&times;</button>
+    <a href="index.html" class="nav__link">Home</a>
+    <a href="rooms.html" class="nav__link">Rooms & Suites</a>
+    <a href="dining.html" class="nav__link">Dining</a>
+    <a href="experiences.html" class="nav__link">Experiences</a>
+    <a href="events.html" class="nav__link">Events</a>
+    <a href="gallery.html" class="nav__link">Gallery</a>
+    <a href="about.html" class="nav__link">Our Story</a>
+    <a href="contact.html" class="nav__link">Contact</a>
+    <button class="nav__cta open-booking-modal">Book Now</button>
+  </div>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="hero__bg">
+      <img src="assets/images/hero-main.webp" alt="Sterling Hotels and Resorts Exterior at Dusk">
+    </div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <span class="hero__label">Welcome to Pure Luxury</span>
+      <h1 class="hero__title">Where time slows down and <em>luxury speaks softly</em>.</h1>
+      <p class="hero__subtitle">Experience a new standard of refined luxury. Tucked away on pristine shores, Sterling Hotels and Resorts offers an intimate sanctuary of peace, design, and impeccable service.</p>
+      <div class="hero__actions">
+        <button class="btn btn--gold open-booking-modal">Explore Reservations</button>
+        <a href="rooms.html" class="btn btn--outline-light">Discover Rooms</a>
+      </div>
+    </div>
+    <div class="hero__scroll">
+      <span class="hero__scroll-label">Scroll to explore</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </header>
+
+  <!-- Quick Booking Bar -->
+  <section class="booking-bar">
+    <form id="booking-bar-form" class="booking-bar__inner">
+      
+      <div class="booking-bar__field">
+        <span class="booking-bar__field-label">Check In</span>
+        <div class="booking-bar__field-value">
+          <input type="date" id="check-in" required>
+        </div>
+      </div>
+
+      <div class="booking-bar__field">
+        <span class="booking-bar__field-label">Check Out</span>
+        <div class="booking-bar__field-value">
+          <input type="date" id="check-out" required>
+        </div>
+      </div>
+
+      <div class="booking-bar__field">
+        <span class="booking-bar__field-label">Room Type</span>
+        <div class="booking-bar__field-value">
+          <select id="room-type">
+            <option value="deluxe">Deluxe Room ($450/n)</option>
+            <option value="premier">Premier Room ($650/n)</option>
+            <option value="suite">Executive Suite ($1,200/n)</option>
+            <option value="penthouse">Sterling Penthouse ($2,500/n)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="booking-bar__field">
+        <span class="booking-bar__field-label">Guests</span>
+        <div class="booking-bar__guests">
+          <button id="adults-minus" class="booking-bar__stepper">-</button>
+          <span id="adults-count" class="booking-bar__guests-count">2</span>
+          <button id="adults-plus" class="booking-bar__stepper">+</button>
+          <span class="text-stone" style="font-size: 12px; margin-inline: 4px;">Adults</span>
+          <input type="hidden" id="adults-val" value="2">
+          
+          <button id="children-minus" class="booking-bar__stepper">-</button>
+          <span id="children-count" class="booking-bar__guests-count">0</span>
+          <button id="children-plus" class="booking-bar__stepper">+</button>
+          <span class="text-stone" style="font-size: 12px; margin-left: 4px;">Kids</span>
+          <input type="hidden" id="children-val" value="0">
+        </div>
+      </div>
+
+      <button type="submit" class="booking-bar__submit">Check Rates</button>
+    </form>
+  </section>
+
+  <!-- Stats Strip -->
+  <section class="stats-strip">
+    <div class="container stats-strip__inner">
+      <div class="stats-strip__item">
+        <div class="stats-strip__value"><span class="counter-value" data-target="47">0</span></div>
+        <div class="stats-strip__label">Luxury Suites</div>
+      </div>
+      <div class="stats-strip__divider"></div>
+      <div class="stats-strip__item">
+        <div class="stats-strip__value"><span class="counter-value" data-target="3">0</span></div>
+        <div class="stats-strip__label">Fine Restaurants</div>
+      </div>
+      <div class="stats-strip__divider"></div>
+      <div class="stats-strip__item">
+        <div class="stats-strip__value"><span class="counter-value" data-target="5">0</span>Star</div>
+        <div class="stats-strip__label">Forbes Rating</div>
+      </div>
+      <div class="stats-strip__divider"></div>
+      <div class="stats-strip__item">
+        <div class="stats-strip__value"><span class="counter-value" data-target="100">0</span>%</div>
+        <div class="stats-strip__label">Private Sanctuary</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Story Section -->
+  <section class="story section">
+    <div class="story__image img-reveal fade-left">
+      <img src="assets/images/pool.webp" alt="Sterling Infinity Pool Sunrise">
+      <div class="story__image-caption">The Infinity Pool — Sunrise over the Horizon</div>
+    </div>
+    <div class="story__content fade-right">
+      <div class="story__content-inner">
+        <span class="label-tag">Our Philosophy</span>
+        <h2 class="story__quote">“We believe in luxury that feels effortless and stays in memory forever.”</h2>
+        <div class="gold-divider"></div>
+        <p>Inspired by the serene minimalism of Aman and the elegant legacy of the Four Seasons, Sterling Hotels and Resorts stands as a sanctuary of modern design and flawless execution. Here, nature and luxury blend seamlessly. Every view is framed like art, and every detail curated for the soul.</p>
+        <a href="about.html" class="btn btn--outline-dark" style="margin-top: 32px;">Read Our Story</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms teaser -->
+  <section class="section section--cream">
+    <div class="container">
+      <div class="section-header flex-between flex-col md-flex-row">
+        <div>
+          <span class="label-tag">Accommodations</span>
+          <h2 class="text-dark">Sojourn in Elegant Grandeur</h2>
+          <div class="gold-divider"></div>
+        </div>
+        <a href="rooms.html" class="btn btn--outline-dark">View All Accommodations</a>
+      </div>
+
+      <div class="rooms-teaser__scroll fade-up">
+        <!-- Deluxe Room Card -->
+        <div class="room-card" onclick="window.location.href='room-detail.html?room=deluxe'">
+          <div class="room-card__image">
+            <img src="assets/images/room-deluxe.webp" alt="Sterling Deluxe Room">
+            <span class="room-card__badge">Popular</span>
+          </div>
+          <div class="room-card__body">
+            <h3 class="room-card__title">Deluxe Garden Room</h3>
+            <div class="room-card__specs">
+              <span class="room-card__spec">450 sqft</span>
+              <span class="room-card__spec">2 Adults</span>
+              <span class="room-card__spec">Garden View</span>
+            </div>
+            <p class="room-card__desc">A quiet sanctuary featuring contemporary walnut furnishings, a marble bathroom, and floor-to-ceiling windows looking out onto lush gardens.</p>
+            <div class="room-card__footer">
+              <div class="room-card__price">
+                <span class="room-card__price-amount">$450</span>
+                <span class="room-card__price-note">per night</span>
+              </div>
+              <span class="room-card__link">View Details &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Premier Suite Card -->
+        <div class="room-card" onclick="window.location.href='room-detail.html?room=suite'">
+          <div class="room-card__image">
+            <img src="assets/images/room-suite.webp" alt="Sterling Executive Suite">
+            <span class="room-card__badge">Signature</span>
+          </div>
+          <div class="room-card__body">
+            <h3 class="room-card__title">Executive Ocean Suite</h3>
+            <div class="room-card__specs">
+              <span class="room-card__spec">850 sqft</span>
+              <span class="room-card__spec">3 Adults</span>
+              <span class="room-card__spec">Ocean View</span>
+            </div>
+            <p class="room-card__desc">Spacious living area, marble bathrooms, private terrace, and striking panoramic views over the ocean. Includes complete butler service.</p>
+            <div class="room-card__footer">
+              <div class="room-card__price">
+                <span class="room-card__price-amount">$1,200</span>
+                <span class="room-card__price-note">per night</span>
+              </div>
+              <span class="room-card__link">View Details &rarr;</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Penthouse Card -->
+        <div class="room-card" onclick="window.location.href='room-detail.html?room=penthouse'">
+          <div class="room-card__image">
+            <div class="photo-placeholder">
+              <div class="photo-placeholder__label">Sterling Penthouse</div>
+            </div>
+            <span class="room-card__badge">Exclusive</span>
+          </div>
+          <div class="room-card__body">
+            <h3 class="room-card__title">The Sterling Penthouse</h3>
+            <div class="room-card__specs">
+              <span class="room-card__spec">2,400 sqft</span>
+              <span class="room-card__spec">4 Adults</span>
+              <span class="room-card__spec">Panoramic Sky</span>
+            </div>
+            <p class="room-card__desc">The ultimate expression of luxury. Features custom art installations, personal infinity pool, vast private sky deck, and complete premium amenities.</p>
+            <div class="room-card__footer">
+              <div class="room-card__price">
+                <span class="room-card__price-amount">$2,500</span>
+                <span class="room-card__price-note">per night</span>
+              </div>
+              <span class="room-card__link">View Details &rarr;</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Amenities Grid -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header section-header--center">
+        <span class="label-tag">Amenities & Comforts</span>
+        <h2 class="text-dark">Designed for Pure Relax</h2>
+        <div class="gold-divider gold-divider--center"></div>
+      </div>
+
+      <div class="amenities-grid fade-up">
+        <div class="amenity-item">
+          <div class="amenity-item__icon">🌊</div>
+          <h3 class="amenity-item__name">Infinity Pool</h3>
+          <p class="amenity-item__desc">Sunrise views, private sunbeds, poolside lounge service.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-item__icon">💆</div>
+          <h3 class="amenity-item__name">Sterling Spa</h3>
+          <p class="amenity-item__desc">Bespoke massages, organic oil therapies, calming treatment rooms.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-item__icon">🍽️</div>
+          <h3 class="amenity-item__name">Fine Dining</h3>
+          <p class="amenity-item__desc">Three signature kitchens, Michelin-starred chefs, wine cellars.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-item__icon">🏋️</div>
+          <h3 class="amenity-item__name">Fitness Club</h3>
+          <p class="amenity-item__desc">State of the art cardio equipment, private yogis, ocean views.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-item__icon">🛎️</div>
+          <h3 class="amenity-item__name">24/7 Butler</h3>
+          <p class="amenity-item__desc">Bespoke concierge assistance, unpacking services, custom requests.</p>
+        </div>
+        <div class="amenity-item">
+          <div class="amenity-item__icon">✈️</div>
+          <h3 class="amenity-item__name">Limo Transfers</h3>
+          <p class="amenity-item__desc">VIP airport pick up with personal chauffeur service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Carousel -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="testimonial-carousel">
+        
+        <!-- Slide 1 -->
+        <div class="testimonial-slide active">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">“An unforgettable experience of peace and quiet. The architecture is a marvel, the butler service was anticipating every need, and the dining was Michelin-grade.”</p>
+          <span class="testimonial__author">Lord Alexander, <strong>London</strong></span>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="testimonial-slide">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">“Sterling has successfully captured Aman's minimalism and combined it with the unmatched service of the Four Seasons. We will be returning every summer.”</p>
+          <span class="testimonial__author">The Sterling Family, <strong>New York</strong></span>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="testimonial-slide">
+          <div class="testimonial__stars">★★★★★</div>
+          <p class="testimonial__quote">“We celebrated our wedding here. The grand ballroom and terrace were dreamlike, and the staff coordinated everything flawlessly. Our guests were wowed.”</p>
+          <span class="testimonial__author">Mrs. & Mr. Sterling, <strong>Geneva</strong></span>
+        </div>
+
+        <!-- Dots -->
+        <div class="carousel-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Promo Offer Banner -->
+  <section class="offer-banner">
+    <div>
+      <div class="offer-banner__label">Seasonal Offer</div>
+      <h3 class="offer-banner__title">The Sterling Retreat Package — Save up to 20%</h3>
+    </div>
+    <button class="btn btn--dark open-booking-modal">Reserve Offer</button>
+  </section>
+
+  <!-- Gallery Grid preview -->
+  <section class="gallery-strip">
+    <div class="gallery-strip__item">
+      <img src="assets/images/hero-main.webp" alt="Sterling Hotels and Resorts Dusk Exterior">
+      <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+    </div>
+    <div class="gallery-strip__item">
+      <img src="assets/images/spa.webp" alt="Sterling Wellness Sanctuary Spa">
+      <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+    </div>
+    <div class="gallery-strip__item">
+      <img src="assets/images/dining-restaurant.webp" alt="Sterling Fine Dining Restaurant">
+      <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+    </div>
+    <div class="gallery-strip__item">
+      <img src="assets/images/room-deluxe.webp" alt="Luxury Deluxe Guest Room">
+      <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+    </div>
+    <div class="gallery-strip__item">
+      <img src="assets/images/room-suite.webp" alt="Premium Executive Suite Living">
+      <div class="gallery-strip__overlay"><span class="gallery-strip__icon">🔍</span></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div>
+        <div class="footer__brand-name">STERLING</div>
+        <div class="footer__brand-sub">HOTELS & RESORTS</div>
+        <p class="footer__brand-desc">A five-star luxury resort combining modern minimalism with timeless hospitality, creating a sanctuary of quiet comfort.</p>
+        <p class="footer__brand-desc" style="margin-top:12px; font-size:var(--fs-xs);">📍 Vattekattu Junction, Kaloor &ndash; Kadavanthara Rd,<br>Kathrikadavu, Kochi, Kerala 682017, India<br><a href="https://www.google.com/maps/place/C+J+Grande+by+Jesway+Hotels+and+Resorts/@9.9884262,76.2931021,17z" target="_blank" rel="noopener" style="color:var(--clr-gold);text-decoration:none;font-size:var(--fs-xs);">🗺 Open in Google Maps &rarr;</a></p>
+        <div class="footer__social">
+          <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
+          <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="footer__social-link" aria-label="Twitter">TW</a>
+          <a href="#" class="footer__social-link" aria-label="Pinterest">PI</a>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="footer__col-title">Explore</h3>
+        <ul class="footer__links">
+          <li><a href="rooms.html" class="footer__link">Rooms & Suites</a></li>
+          <li><a href="dining.html" class="footer__link">Dining Venues</a></li>
+          <li><a href="experiences.html" class="footer__link">Spa & Wellness</a></li>
+          <li><a href="events.html" class="footer__link">Weddings & Meetings</a></li>
+          <li><a href="gallery.html" class="footer__link">Photo Gallery</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer__col-title">Heritage</h3>
+        <ul class="footer__links">
+          <li><a href="about.html" class="footer__link">Our Philosophy</a></li>
+          <li><a href="about.html" class="footer__link">Awards & Reviews</a></li>
+          <li><a href="contact.html" class="footer__link">Location Map</a></li>
+          <li><a href="contact.html" class="footer__link">Directions Guide</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="footer__col-title">Newsletter</h3>
+        <p class="footer__brand-desc" style="margin-bottom: 12px;">Subscribe for exclusive offers and private member invitations.</p>
+        <form class="footer__newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing to our newsletter.');">
+          <input type="email" placeholder="Your email address" class="footer__newsletter-input" required>
+          <button type="submit" class="footer__newsletter-btn">Join</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <span class="footer__copy">&copy; 2026 Sterling Hotels and Resorts. All Rights Reserved.</span>
+      <div class="footer__legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div id="booking-modal" class="modal-overlay">
+    <div class="modal">
+      <div class="modal__header">
+        <div>
+          <h2 class="modal__title">Reservation Inquiry</h2>
+          <span class="modal__subtitle">Sterling Luxury Suite Booking</span>
+        </div>
+        <button id="modal-close" class="modal__close" aria-label="Close modal">&times;</button>
+      </div>
+      <div class="modal__body">
+        
+        <form id="modal-booking-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-check-in" class="form-label">Check In</label>
+              <input type="date" id="modal-check-in" class="form-input" required>
+            </div>
+            <div class="form-group">
+              <label for="modal-check-out" class="form-label">Check Out</label>
+              <input type="date" id="modal-check-out" class="form-input" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <select id="modal-room-type" class="form-select">
+                <option value="deluxe">Deluxe Garden Room ($450/n)</option>
+                <option value="premier">Premier Room ($650/n)</option>
+                <option value="suite">Executive Ocean Suite ($1,200/n)</option>
+                <option value="penthouse">Sterling Penthouse ($2,500/n)</option>
+              </select>
+            </div>
+            <div class="form-row" style="margin-bottom: 0;">
+              <div class="form-group">
+                <label for="modal-adults" class="form-label">Adults</label>
+                <select id="modal-adults" class="form-select">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="modal-children" class="form-label">Children</label>
+                <select id="modal-children" class="form-select">
+                  <option value="0" selected>0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider" style="margin-block: 24px;"></div>
+
+          <div class="form-group form-group--full">
+            <label for="guest-name" class="form-label">Full Name</label>
+            <input type="text" id="guest-name" class="form-input" placeholder="e.g., Alexander Mercer" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guest-email" class="form-label">Email Address</label>
+              <input type="email" id="guest-email" class="form-input" placeholder="e.g., alex@luxury.com" required>
+            </div>
+            <div class="form-group">
+              <label for="guest-phone" class="form-label">Phone Number</label>
+              <input type="tel" id="guest-phone" class="form-input" placeholder="e.g., +1 (555) 019-2834" required>
+            </div>
+          </div>
+
+          <div class="form-group form-group--full">
+            <label for="guest-requests" class="form-label">Special Requests / Preferences</label>
+            <textarea id="guest-requests" class="form-textarea" placeholder="e.g., feather-free pillows, airport pickup request..."></textarea>
+          </div>
+
+          <div class="modal__total">
+            <div>
+              <span class="modal__total-label">Estimated Stay Total</span>
+              <div class="modal__total-nights" id="total-nights">1 Night</div>
+            </div>
+            <div class="modal__total-price" id="total-price">$450</div>
+          </div>
+
+          <div class="flex-between">
+            <button type="button" id="modal-cancel" class="btn btn--outline-dark" style="padding: 12px 24px;">Cancel</button>
+            <button type="submit" class="btn btn--gold" style="padding: 12px 36px;">Request Stay</button>
+          </div>
+        </form>
+
+        <!-- Success Message -->
+        <div class="modal__success">
+          <div class="modal__success-icon">✨</div>
+          <h2 class="text-dark">Stay Requested</h2>
+          <div class="gold-divider gold-divider--center"></div>
+          <p style="margin-bottom: 24px;">Thank you for choosing Sterling Hotels and Resorts. Our personal concierge will reach out to you within 2 hours to confirm your booking and arrange your custom itinerary.</p>
+          <div style="background: var(--clr-ivory); padding: 16px; display: inline-block;">
+            <span class="label-tag" style="display: block; font-size: 10px; margin-bottom: 4px;">Confirmation Code</span>
+            <strong id="confirmation-code" style="font-size: 18px; letter-spacing: 0.08em; color: var(--clr-gold-dk);">ST-PENDING</strong>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Lightbox Overlay -->
+  <div id="lightbox" class="lightbox">
+    <button id="lightbox-close" class="lightbox__close" aria-label="Close image gallery">&times;</button>
+    <button id="lightbox-prev" class="lightbox__nav lightbox__nav--prev" aria-label="Previous image">&lsaquo;</button>
+    <img id="lightbox-img" src="" alt="" class="lightbox__img">
+    <button id="lightbox-next" class="lightbox__nav lightbox__nav--next" aria-label="Next image">&rsaquo;</button>
+    <div id="lightbox-caption" class="lightbox__caption">Gallery Preview</div>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/gallery.js"></script>
+  <script src="js/carousel.js"></script>
+</body>
+</html>
