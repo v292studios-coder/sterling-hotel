@@ -92,74 +92,6 @@
       color: var(--clr-gold);
       margin-bottom: 12px;
     }
-
-    /* Why Choose CJ Grande list styling */
-    .why-choose-list {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 16px;
-    }
-    .why-choose-list li {
-      position: relative;
-      padding-left: 24px;
-      font-size: 1.05rem;
-      line-height: 1.6;
-      margin-bottom: 16px;
-      color: var(--clr-dark-80);
-    }
-    .why-choose-list li::before {
-      content: '•';
-      position: absolute;
-      left: 0;
-      color: var(--clr-gold);
-      font-size: 1.6rem;
-      line-height: 1;
-      top: -2px;
-    }
-
-    /* Navigation overrides for white theme */
-    .nav {
-      position: sticky !important;
-      top: 0;
-      background: var(--clr-white) !important;
-      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-      padding-block: 20px !important;
-      z-index: 1000;
-    }
-    .nav__logo-name {
-      color: #0f5b99 !important;
-      font-family: var(--font-display);
-      font-weight: 500;
-      letter-spacing: normal;
-      text-transform: none;
-    }
-    .nav__logo-sub {
-      display: none !important;
-    }
-    .nav__links .nav__link {
-      color: var(--clr-dark) !important;
-    }
-    .nav__links .nav__link:hover {
-      color: #0f5b99 !important;
-    }
-    .nav__links .nav__link::after {
-      background: #0f5b99 !important;
-    }
-    .nav__links .nav__cta {
-      background: #0f5b99 !important;
-      color: var(--clr-white) !important;
-      border-radius: 50px !important;
-      border: none !important;
-      padding: 10px 24px !important;
-      font-weight: 500 !important;
-      box-shadow: none !important;
-    }
-    .nav__links .nav__cta:hover {
-      background: #0d4f85 !important;
-    }
-    .nav__hamburger span {
-      background-color: var(--clr-dark) !important;
-    }
   </style>
 </head>
 <body>
@@ -168,7 +100,7 @@
   <nav class="nav">
     <div class="nav__inner">
       <a href="index.html" class="nav__logo">
-        <span class="nav__logo-name">CJ Grande Business Hotel, Kochi</span>
+        <span class="nav__logo-name">STERLING</span>
         <span class="nav__logo-sub">HOTELS & RESORTS</span>
       </a>
       <div class="nav__links">
@@ -202,39 +134,83 @@
     <button class="nav__cta open-booking-modal">Book Now</button>
   </div>
 
-  <!-- Smart Stays Section -->
-  <section class="section" style="padding-top: var(--sp-16); padding-bottom: var(--sp-12);">
+  <!-- Page Hero -->
+  <header class="page-hero">
+    <div class="page-hero__bg">
+      <img src="assets/images/hero-main.webp" alt="Sterling Hotels and Resorts grand lobby heritage">
+    </div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <div class="page-hero__breadcrumb">
+        <a href="index.html">Home</a>
+        <span>&middot;</span>
+        <span>Our Story</span>
+      </div>
+      <h1 class="page-hero__title">A Legacy of Grace</h1>
+    </div>
+  </header>
+
+  <!-- Philosophy Section -->
+  <section class="section">
     <div class="container">
       <div class="grid grid-2" style="align-items:center; gap: clamp(48px, 6vw, 96px);">
-        <div class="fade-left">
-          <h2 style="font-family: var(--font-display); font-style: italic; color: #c5a059; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 24px; line-height: 1.2;">Smart Stays in the Heart of Cochin</h2>
-          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; color: var(--clr-dark-80);">Welcome to CJ Grande, a contemporary business hotel conveniently located in Cochin's prime business and shopping hub. Managed by Jesway Hotels & Resorts, CJ Grande is thoughtfully designed to meet the needs of today's business and corporate travelers, while offering comfort and convenience for leisure guests as well.</p>
-          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; color: var(--clr-dark-80);">Our well-appointed Deluxe Rooms and spacious Suites are tailored to suit every budget without compromising on quality or service. Whether you're here for a quick business trip or an extended stay, CJ Grande offers the perfect balance of affordability, accessibility, and comfort.</p>
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--clr-dark-80);">Located close to key commercial centers, shopping districts, and major tourist attractions, CJ Grande allows you to make the most of your time in Cochin – combining productivity with a touch of local exploration.</p>
+        <div class="img-reveal fade-left">
+          <img src="assets/images/pool.webp" alt="Sterling Hotels and Resorts pool at golden hour" class="img-cover aspect-portrait" style="height: 560px;">
         </div>
-        <div class="img-reveal fade-right">
-          <img src="assets/images/about-heritage.webp" alt="CJ Grande Reception Desk" class="img-cover aspect-portrait" style="height: 480px; border-radius: 4px;">
+        <div class="fade-right">
+          <span class="label-tag">Who We Are</span>
+          <h2 class="text-dark" style="margin-top: 12px; margin-bottom: 24px;">Built on a Vision of <em style="font-style:italic; color: var(--clr-gold);">Quiet Luxury</em></h2>
+          <div class="gold-divider"></div>
+          <p style="font-size: 1.1rem; margin-bottom: 20px;">Sterling Hotels and Resorts was born from a singular conviction: that true luxury is not about excess, but about effortless perfection. That a beautifully curated space, impeccably served, can transform a night's stay into a memory that lasts a lifetime.</p>
+          <p style="margin-bottom: 20px;">Founded in 1998 by the Sterling family, our property began as a boutique retreat of 12 rooms overlooking a quiet cove. Over two decades, guided by an uncompromising design philosophy, it grew into the 47-room landmark you see today — without ever losing the intimacy and warmth of those first guests.</p>
+          <p>We are members of The Leading Hotels of the World and have held a Forbes Five-Star designation for eleven consecutive years.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Why Choose CJ Grande Section -->
-  <section class="section section--cream" style="padding-block: var(--sp-16);">
+  <!-- Heritage Timeline -->
+  <section class="section section--cream">
     <div class="container">
-      <div class="grid grid-2" style="align-items: center; gap: clamp(48px, 6vw, 96px);">
-        <div class="img-reveal fade-left">
-          <img src="assets/images/dining-waitress.webp" alt="Warm hospitality at CJ Grande" class="img-cover aspect-portrait" style="height: 480px; border-radius: 4px;">
+      <div class="grid grid-2" style="gap: clamp(48px, 6vw, 96px); align-items: start;">
+        <div>
+          <span class="label-tag">Our Heritage</span>
+          <h2 class="text-dark" style="margin-top: 12px; margin-bottom: 32px;">Two Decades of Milestones</h2>
+          <div class="timeline fade-up">
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">1998</div>
+              <h3 class="timeline__title">The Founding Vision</h3>
+              <p>The Sterling family opened the doors of a 12-room coastal retreat, guided by a philosophy of understated luxury and personalised care.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2004</div>
+              <h3 class="timeline__title">First Forbes Star</h3>
+              <p>Sterling Hotels and Resorts was awarded its first Forbes Five-Star designation, recognising the exceptional quality of our guest experience.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2009</div>
+              <h3 class="timeline__title">The Grand Expansion</h3>
+              <p>Following a two-year architectural renovation, Sterling expanded to 47 rooms and suites, adding L'Ambroisie and The Sterling Spa.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2015</div>
+              <h3 class="timeline__title">Michelin Recognition</h3>
+              <p>L'Ambroisie was awarded its first Michelin star under Executive Chef Adrien Morel, cementing Sterling's culinary reputation.</p>
+            </div>
+            <div class="timeline__item">
+              <div class="timeline__dot"></div>
+              <div class="timeline__year">2023</div>
+              <h3 class="timeline__title">The Penthouse & Infinity Pool</h3>
+              <p>The iconic Penthouse suite and rooftop infinity pool were unveiled, completing Sterling's vision of an unrivalled luxury retreat.</p>
+            </div>
+          </div>
         </div>
-        <div class="fade-right">
-          <h2 style="font-family: var(--font-display); color: #0f5b99; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 400; margin-bottom: 24px; line-height: 1.2;">Why Choose CJ Grande?</h2>
-          <ul class="why-choose-list">
-            <li>Prime location in Cochin's business and shopping district</li>
-            <li>Comfortable Deluxe Rooms and elegant Suites to suit every traveler</li>
-            <li>Easy access to city landmarks and tourist attractions</li>
-            <li>Seamless connectivity and transport options across the city</li>
-            <li>Warm, professional hospitality by Jesway Hotels & Resorts</li>
-          </ul>
+        <div class="img-reveal fade-right" style="margin-top: 60px;">
+          <img src="assets/images/dining-restaurant.webp" alt="Historic Sterling dining room" class="img-cover aspect-portrait" style="height: 620px;">
         </div>
       </div>
     </div>
@@ -327,7 +303,7 @@
         <div class="footer__brand-name">STERLING</div>
         <div class="footer__brand-sub">HOTELS & RESORTS</div>
         <p class="footer__brand-desc">A five-star luxury resort combining modern minimalism with timeless hospitality, creating a sanctuary of quiet comfort.</p>
-        <p class="footer__brand-desc" style="margin-top:12px; font-size:var(--fs-xs);">📍 Vattekattu Junction, Kaloor &ndash; Kadavanthara Rd,<br>Kathrikadavu, Kochi, Kerala 682017, India<br><a href="https://www.google.com/maps/place/C+J+Grande+by+Jesway+Hotels+and+Resorts/@9.9884262,76.2931021,17z" target="_blank" rel="noopener" style="color:var(--clr-gold);text-decoration:none;font-size:var(--fs-xs);">🗺 Open in Google Maps &rarr;</a></p>
+        <p class="footer__brand-desc" style="margin-top:12px; font-size:var(--fs-xs);">📍 Door no : 43/88, Civil Lane Road,<br>Palarivattom, Ernakulam, Kerala 682025<br><a href="https://www.google.com/maps/search/?api=1&query=KAIFAN+APARTMENT+Pothencode+Andoorkonam+Kerala+695584" target="_blank" rel="noopener" style="color:var(--clr-gold);text-decoration:none;font-size:var(--fs-xs);">🗺 Open in Google Maps &rarr;</a></p>
         <div class="footer__social">
           <a href="#" class="footer__social-link" aria-label="Facebook">FB</a>
           <a href="#" class="footer__social-link" aria-label="Instagram">IG</a>

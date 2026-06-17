@@ -10,6 +10,31 @@
   <link rel="stylesheet" href="styles/base.css">
   <link rel="stylesheet" href="styles/components.css">
   <link rel="stylesheet" href="styles/animations.css">
+  <style>
+    /* Why Choose CJ Grande list styling */
+    .why-choose-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 16px;
+    }
+    .why-choose-list li {
+      position: relative;
+      padding-left: 24px;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      color: var(--clr-dark-80);
+    }
+    .why-choose-list li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--clr-gold);
+      font-size: 1.6rem;
+      line-height: 1;
+      top: -2px;
+    }
+  </style>
 </head>
 <body>
 
@@ -152,19 +177,40 @@
     </div>
   </section>
 
-  <!-- Editorial Story Section -->
-  <section class="story section">
-    <div class="story__image img-reveal fade-left">
-      <img src="assets/images/gallery/hg-37.jpg" alt="CJ Grande Business Hotel Facade">
-      <div class="story__image-caption">The Infinity Pool — Sunrise over the Horizon</div>
+  <!-- Smart Stays Section -->
+  <section class="section" style="padding-top: var(--sp-16); padding-bottom: var(--sp-12);">
+    <div class="container">
+      <div class="grid grid-2" style="align-items:center; gap: clamp(48px, 6vw, 96px);">
+        <div class="fade-left">
+          <h2 style="font-family: var(--font-display); font-style: italic; color: #c5a059; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; margin-bottom: 24px; line-height: 1.2;">Smart Stays in the Heart of Cochin</h2>
+          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; color: var(--clr-dark-80);">Welcome to CJ Grande, a contemporary business hotel conveniently located in Cochin's prime business and shopping hub. Managed by Jesway Hotels & Resorts, CJ Grande is thoughtfully designed to meet the needs of today's business and corporate travelers, while offering comfort and convenience for leisure guests as well.</p>
+          <p style="font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; color: var(--clr-dark-80);">Our well-appointed Deluxe Rooms and spacious Suites are tailored to suit every budget without compromising on quality or service. Whether you're here for a quick business trip or an extended stay, CJ Grande offers the perfect balance of affordability, accessibility, and comfort.</p>
+          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--clr-dark-80);">Located close to key commercial centers, shopping districts, and major tourist attractions, CJ Grande allows you to make the most of your time in Cochin – combining productivity with a touch of local exploration.</p>
+        </div>
+        <div class="img-reveal fade-right">
+          <img src="assets/images/about-heritage.webp" alt="CJ Grande Reception Desk" class="img-cover aspect-portrait" style="height: 480px; border-radius: 4px;">
+        </div>
+      </div>
     </div>
-    <div class="story__content fade-right">
-      <div class="story__content-inner">
-        <span class="label-tag">Our Philosophy</span>
-        <h2 class="story__quote">“We believe in luxury that feels effortless and stays in memory forever.”</h2>
-        <div class="gold-divider"></div>
-        <p>Inspired by the serene minimalism of Aman and the elegant legacy of the Four Seasons, Sterling Hotels and Resorts stands as a sanctuary of modern design and flawless execution. Here, nature and luxury blend seamlessly. Every view is framed like art, and every detail curated for the soul.</p>
-        <a href="about.html" class="btn btn--outline-dark" style="margin-top: 32px;">Read Our Story</a>
+  </section>
+
+  <!-- Why Choose CJ Grande Section -->
+  <section class="section section--cream" style="padding-block: var(--sp-16);">
+    <div class="container">
+      <div class="grid grid-2" style="align-items: center; gap: clamp(48px, 6vw, 96px);">
+        <div class="img-reveal fade-left">
+          <img src="assets/images/dining-waitress.webp" alt="Warm hospitality at CJ Grande" class="img-cover aspect-portrait" style="height: 480px; border-radius: 4px;">
+        </div>
+        <div class="fade-right">
+          <h2 style="font-family: var(--font-display); color: #0f5b99; font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 400; margin-bottom: 24px; line-height: 1.2;">Why Choose CJ Grande?</h2>
+          <ul class="why-choose-list">
+            <li>Prime location in Cochin's business and shopping district</li>
+            <li>Comfortable Deluxe Rooms and elegant Suites to suit every traveler</li>
+            <li>Easy access to city landmarks and tourist attractions</li>
+            <li>Seamless connectivity and transport options across the city</li>
+            <li>Warm, professional hospitality by Jesway Hotels & Resorts</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
