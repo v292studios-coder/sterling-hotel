@@ -297,7 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bookingBarForm) {
     bookingBarForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      openModal();
+      window.location.href = "https://hostel-saas-server.vercel.app/checkin/cj-grande-by-sterling-hotels-and-resorts";
     });
   }
 
@@ -305,12 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.open-booking-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetRoom = btn.getAttribute('data-room');
-      openModal();
-      if (targetRoom && modalRoomType) {
-        modalRoomType.value = targetRoom;
-        calculateNightsAndPrice();
-      }
+      window.location.href = "https://hostel-saas-server.vercel.app/checkin/cj-grande-by-sterling-hotels-and-resorts";
     });
   });
 
