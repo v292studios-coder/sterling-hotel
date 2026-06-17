@@ -6,10 +6,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Room rates mapping
   const roomRates = {
-    'deluxe': 450,
-    'premier': 650,
-    'suite': 1200,
-    'penthouse': 2500
+    'deluxe': 4500,
+    'premier': 6500,
+    'suite': 12000,
+    'penthouse': 25000
   };
 
   // --- DATE PICKER ENGINE (DD/MM/YYYY) ---
@@ -351,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const diffTime = Math.abs(checkOut - checkIn);
     const diffNights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    const rate = roomRates[roomType] || 450;
+    const rate = roomRates[roomType] || 4500;
     const totalPrice = diffNights * rate;
 
     // Update displays
@@ -359,7 +359,7 @@ document.addEventListener('DOMContentLoaded', () => {
       totalNightsSpan.textContent = `${diffNights} Night${diffNights > 1 ? 's' : ''}`;
     }
     if (totalPriceSpan) {
-      totalPriceSpan.textContent = `$${totalPrice.toLocaleString()}`;
+      totalPriceSpan.textContent = `₹${totalPrice.toLocaleString('en-IN')}`;
     }
   }
 
