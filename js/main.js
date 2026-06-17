@@ -110,17 +110,37 @@ document.addEventListener('DOMContentLoaded', () => {
       statsValues.forEach(counter => {
         const target = +counter.getAttribute('data-target');
         const duration = 2000; // 2 seconds
-        const stepTime = Math.abs(Math.floor(duration / target));
-        let current = 0;
+        const isFloat = !Number.isInteger(target);
         
-        const timer = setInterval(() => {
-          current += 1;
-          counter.textContent = current;
-          if (current >= target) {
-            counter.textContent = target;
-            clearInterval(timer);
-          }
-        }, stepTime);
+        if (isFloat) {
+          const steps = 40; // Number of steps for float animation
+          const stepTime = duration / steps;
+          const increment = target / steps;
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              counter.textContent = target.toFixed(1);
+              clearInterval(timer);
+            } else {
+              counter.textContent = current.toFixed(1);
+            }
+          }, stepTime);
+        } else {
+          const stepTime = Math.abs(Math.floor(duration / target));
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current += 1;
+            if (current >= target) {
+              counter.textContent = target;
+              clearInterval(timer);
+            } else {
+              counter.textContent = current;
+            }
+          }, stepTime);
+        }
       });
     }
   }
