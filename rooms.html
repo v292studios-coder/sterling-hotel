@@ -74,10 +74,10 @@
       <!-- Filters -->
       <div class="flex-between flex-col md-flex-row" style="margin-bottom: 40px; gap: 20px;">
         <div class="filter-bar">
-          <button class="filter-btn active" data-filter="all">All Sanctuaries</button>
+          <button class="filter-btn active" data-filter="all">All Accommodations</button>
           <button class="filter-btn" data-filter="room">Rooms</button>
           <button class="filter-btn" data-filter="suite">Suites</button>
-          <button class="filter-btn" data-filter="exclusive">Exclusive</button>
+          <button class="filter-btn" data-filter="dormitory">Dormitory</button>
         </div>
         <p class="text-stone" style="font-size: var(--fs-sm);">All rooms feature signature bath items, daily breakfast, and local fruit baskets.</p>
       </div>
@@ -85,70 +85,22 @@
       <!-- Rooms Grid -->
       <div class="grid grid-3 gallery-grid">
         
-        <!-- Deluxe Room -->
-        <div class="room-card gallery-grid__item fade-up" data-category="room" onclick="window.location.href='room-detail.html?room=deluxe'">
+        <!-- Suite Room -->
+        <div class="room-card gallery-grid__item fade-up" data-category="suite" onclick="window.location.href='room-detail.html?room=suite'">
           <div class="room-card__image">
-            <img src="assets/images/room-deluxe.webp" alt="Deluxe Garden Room">
-            <span class="room-card__badge">Garden View</span>
+            <img src="assets/images/room-suite.webp" alt="Sterling Suite Room">
+            <span class="room-card__badge">Signature</span>
           </div>
           <div class="room-card__body">
-            <h3 class="room-card__title">Deluxe Garden Room</h3>
-            <div class="room-card__specs">
-              <span class="room-card__spec">450 sqft</span>
-              <span class="room-card__spec">2 Guests</span>
-            </div>
-            <p class="room-card__desc">A peaceful retreat facing landscaped resort gardens, with private patio seating, walnut study desks, and modern marble fittings.</p>
-            <div class="room-card__footer">
-              <div class="room-card__price">
-                <span class="room-card__price-amount">₹4,500</span>
-                <span class="room-card__price-note">per night</span>
-              </div>
-              <span class="room-card__link">Book Stay &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Premier Room -->
-        <div class="room-card gallery-grid__item fade-up stagger-1" data-category="room" onclick="window.location.href='room-detail.html?room=premier'">
-          <div class="room-card__image">
-            <div class="photo-placeholder">
-              <div class="photo-placeholder__label">Premier Oceanfront Room</div>
-            </div>
-            <span class="room-card__badge">Ocean View</span>
-          </div>
-          <div class="room-card__body">
-            <h3 class="room-card__title">Premier Ocean Room</h3>
-            <div class="room-card__specs">
-              <span class="room-card__spec">550 sqft</span>
-              <span class="room-card__spec">2 Guests</span>
-            </div>
-            <p class="room-card__desc">Featuring sweeping coastal scenery, plush king bedding, glass balconies, and automated guest controls for temperature and shades.</p>
-            <div class="room-card__footer">
-              <div class="room-card__price">
-                <span class="room-card__price-amount">₹6,500</span>
-                <span class="room-card__price-note">per night</span>
-              </div>
-              <span class="room-card__link">Book Stay &rarr;</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Executive Suite -->
-        <div class="room-card gallery-grid__item fade-up stagger-2" data-category="suite" onclick="window.location.href='room-detail.html?room=suite'">
-          <div class="room-card__image">
-            <img src="assets/images/room-suite.webp" alt="Executive Ocean Suite">
-            <span class="room-card__badge">Ocean Front</span>
-          </div>
-          <div class="room-card__body">
-            <h3 class="room-card__title">Executive Ocean Suite</h3>
+            <h3 class="room-card__title">Suite Room</h3>
             <div class="room-card__specs">
               <span class="room-card__spec">850 sqft</span>
               <span class="room-card__spec">3 Guests</span>
             </div>
-            <p class="room-card__desc">Spacious separated parlor, dining corner, oceanfront loungers on balcony, and custom standalone tubs. VIP butler service included.</p>
+            <p class="room-card__desc">Elegant living and dining spaces, private balcony, premium marble bath, and custom local wood furnishings.</p>
             <div class="room-card__footer">
               <div class="room-card__price">
-                <span class="room-card__price-amount">₹12,000</span>
+                <span class="room-card__price-amount">₹2,500</span>
                 <span class="room-card__price-note">per night</span>
               </div>
               <span class="room-card__link">Book Stay &rarr;</span>
@@ -156,24 +108,22 @@
           </div>
         </div>
 
-        <!-- President Suite -->
-        <div class="room-card gallery-grid__item fade-up" data-category="suite" onclick="window.location.href='room-detail.html?room=suite'">
+        <!-- Deluxe Room -->
+        <div class="room-card gallery-grid__item fade-up stagger-1" data-category="room" onclick="window.location.href='room-detail.html?room=deluxe'">
           <div class="room-card__image">
-            <div class="photo-placeholder">
-              <div class="photo-placeholder__label">Presidential Suite Lounge</div>
-            </div>
-            <span class="room-card__badge">Signature</span>
+            <img src="assets/images/room-deluxe.webp" alt="Sterling Deluxe Room">
+            <span class="room-card__badge">Popular</span>
           </div>
           <div class="room-card__body">
-            <h3 class="room-card__title">Presidential Suite</h3>
+            <h3 class="room-card__title">Deluxe Room</h3>
             <div class="room-card__specs">
-              <span class="room-card__spec">1,500 sqft</span>
-              <span class="room-card__spec">4 Guests</span>
+              <span class="room-card__spec">450 sqft</span>
+              <span class="room-card__spec">2 Guests</span>
             </div>
-            <p class="room-card__desc">A expansive, elegant floorplan featuring two bedrooms, formal grand dining room table, private gym room, and personalized staff kitchen access.</p>
+            <p class="room-card__desc">Luxurious contemporary room with botanical garden views, plush bedding, executive desk, and modern en-suite.</p>
             <div class="room-card__footer">
               <div class="room-card__price">
-                <span class="room-card__price-amount">₹18,000</span>
+                <span class="room-card__price-amount">₹2,000</span>
                 <span class="room-card__price-note">per night</span>
               </div>
               <span class="room-card__link">Book Stay &rarr;</span>
@@ -181,24 +131,24 @@
           </div>
         </div>
 
-        <!-- Penthouse Suite -->
-        <div class="room-card gallery-grid__item fade-up stagger-1" data-category="exclusive" onclick="window.location.href='room-detail.html?room=penthouse'">
+        <!-- Double/King size Room -->
+        <div class="room-card gallery-grid__item fade-up stagger-2" data-category="room" onclick="window.location.href='room-detail.html?room=double'">
           <div class="room-card__image">
             <div class="photo-placeholder">
-              <div class="photo-placeholder__label">Sterling Penthouse Suite</div>
+              <div class="photo-placeholder__label">Double/King Room</div>
             </div>
-            <span class="room-card__badge">Exclusive</span>
+            <span class="room-card__badge">Premium</span>
           </div>
           <div class="room-card__body">
-            <h3 class="room-card__title">The Sterling Penthouse</h3>
+            <h3 class="room-card__title">Double/King size Room</h3>
             <div class="room-card__specs">
-              <span class="room-card__spec">2,400 sqft</span>
-              <span class="room-card__spec">4 Guests</span>
+              <span class="room-card__spec">550 sqft</span>
+              <span class="room-card__spec">2 Guests</span>
             </div>
-            <p class="room-card__desc">Highest-floor duplex sky sanctuary. Includes heated infinity pool on the balcony, cocktail bar setup, piano, and all-access VIP benefits.</p>
+            <p class="room-card__desc">Comfortable layout featuring a grand double or king size bed, cozy lounging corner, and high-speed amenities.</p>
             <div class="room-card__footer">
               <div class="room-card__price">
-                <span class="room-card__price-amount">₹25,000</span>
+                <span class="room-card__price-amount">₹1,800</span>
                 <span class="room-card__price-note">per night</span>
               </div>
               <span class="room-card__link">Book Stay &rarr;</span>
@@ -206,24 +156,24 @@
           </div>
         </div>
 
-        <!-- Private Villa -->
-        <div class="room-card gallery-grid__item fade-up stagger-2" data-category="exclusive" onclick="window.location.href='room-detail.html?room=suite'">
+        <!-- Dormitory -->
+        <div class="room-card gallery-grid__item fade-up" data-category="dormitory" onclick="window.location.href='room-detail.html?room=dormitory'">
           <div class="room-card__image">
             <div class="photo-placeholder">
-              <div class="photo-placeholder__label">Beachfront Private Villa</div>
+              <div class="photo-placeholder__label">Dormitory Bed</div>
             </div>
-            <span class="room-card__badge">Private Oasis</span>
+            <span class="room-card__badge">Value</span>
           </div>
           <div class="room-card__body">
-            <h3 class="room-card__title">Beachfront Garden Villa</h3>
+            <h3 class="room-card__title">Dormitory</h3>
             <div class="room-card__specs">
-              <span class="room-card__spec">3,200 sqft</span>
-              <span class="room-card__spec">6 Guests</span>
+              <span class="room-card__spec">Single Bed</span>
+              <span class="room-card__spec">1 Person</span>
             </div>
-            <p class="room-card__desc">Detached luxury villa opening directly onto a private sandy cove. Complete with custom private beach dining deck, chef service, and garden courtyard.</p>
+            <p class="room-card__desc">Clean, modern shared sanctuary featuring comfortable single beds, personal lockers, and shared bath facilities.</p>
             <div class="room-card__footer">
               <div class="room-card__price">
-                <span class="room-card__price-amount">₹42,000</span>
+                <span class="room-card__price-amount">₹500</span>
                 <span class="room-card__price-note">per night</span>
               </div>
               <span class="room-card__link">Book Stay &rarr;</span>
@@ -312,12 +262,12 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <label for="modal-room-type" class="form-label">Room / Suite / Dormitory</label>
               <select id="modal-room-type" class="form-select">
-                <option value="deluxe">Deluxe Garden Room (₹4,500/n)</option>
-                <option value="premier">Premier Room (₹6,500/n)</option>
-                <option value="suite">Executive Ocean Suite (₹12,000/n)</option>
-                <option value="penthouse">Sterling Penthouse (₹25,000/n)</option>
+                <option value="suite">Suite Room (₹2,500/n)</option>
+                <option value="deluxe" selected>Deluxe Room (₹2,000/n)</option>
+                <option value="double">Double/King size Room (₹1,800/n)</option>
+                <option value="dormitory">Dormitory (₹500/n)</option>
               </select>
             </div>
             <div class="form-row" style="margin-bottom: 0;">
@@ -328,6 +278,8 @@
                   <option value="2" selected>2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
                 </select>
               </div>
               <div class="form-group">
@@ -337,8 +289,22 @@
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top: 15px; margin-bottom: 0;">
+            <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
+              <input type="checkbox" id="modal-extra-bed" style="width: 18px; height: 18px; cursor: pointer;">
+              <label for="modal-extra-bed" class="form-label" style="margin-bottom: 0; cursor: pointer; user-select: none;">Request Extra Bed (+₹500/night)</label>
+            </div>
+            <div class="form-group">
+              <span class="text-stone" style="font-size: var(--fs-xs); display: block; line-height: 1.4;">
+                * Extra person above age 9 / Extra bed: ₹500/night.<br>
+                * Kids under age 9: free of charge.
+              </span>
             </div>
           </div>
           <div class="divider" style="margin-block: 24px;"></div>

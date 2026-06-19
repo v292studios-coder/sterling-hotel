@@ -6,10 +6,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Room rates mapping
   const roomRates = {
-    'deluxe': 4500,
-    'premier': 6500,
-    'suite': 12000,
-    'penthouse': 25000
+    'suite': 2500,
+    'deluxe': 2000,
+    'double': 1800,
+    'dormitory': 500
   };
 
   // --- DATE PICKER ENGINE (DD/MM/YYYY) ---
@@ -226,6 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
           val--;
           count.textContent = val;
           if (input) input.value = val;
+          calculateNightsAndPrice();
         }
       });
 
@@ -236,6 +237,7 @@ document.addEventListener('DOMContentLoaded', () => {
           val++;
           count.textContent = val;
           if (input) input.value = val;
+          calculateNightsAndPrice();
         }
       });
     }
@@ -323,17 +325,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function calculateNightsAndPrice() {
     let checkInVal, checkOutVal, roomType;
+    let adults = 2;
+    let children = 0;
+    let extraBed = false;
 
     // Determine values depending on if we are checking from modal or bar
     if (bookingModal && bookingModal.classList.contains('open')) {
       checkInVal = modalCheckIn ? modalCheckIn.value : '';
       checkOutVal = modalCheckOut ? modalCheckOut.value : '';
       roomType = modalRoomType ? modalRoomType.value : 'deluxe';
+      adults = modalAdults ? parseInt(modalAdults.value, 10) : 2;
+      children = modalChildren ? parseInt(modalChildren.value, 10) : 0;
+      const extraBedCheckbox = document.getElementById('modal-extra-bed');
+      extraBed = extraBedCheckbox ? extraBedCheckbox.checked : false;
     } else {
       checkInVal = checkInInput ? checkInInput.value : '';
       checkOutVal = checkOutInput ? checkOutInput.value : '';
       const barRoomSelect = document.getElementById('room-type');
       roomType = barRoomSelect ? barRoomSelect.value : 'deluxe';
+      adults = adultsVal ? parseInt(adultsVal.value, 10) : 2;
+      children = childrenVal ? parseInt(childrenVal.value, 10) : 0;
     }
 
     if (!checkInVal || !checkOutVal) return;
@@ -346,8 +357,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const diffTime = Math.abs(checkOut - checkIn);
     const diffNights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-    const rate = roomRates[roomType] || 4500;
-    const totalPrice = diffNights * rate;
+    let baseRate = roomRates[roomType] || 2000;
+    let totalRatePerNight = baseRate;
+
+    if (roomType === 'dormitory') {
+      // Dormitory is per-person (kids under 9 free)
+      totalRatePerNight = adults * baseRate;
+      if (extraBed) {
+        totalRatePerNight += 500;
+      }
+    } else {
+      // Suite, Deluxe, Double/King standard capacity is 2 adults. Extra adults or people above 9 are charged Rs 500.
+      // Kids under 9 free.
+      const extraPersonCount = Math.max(0, adults - 2);
+      totalRatePerNight += extraPersonCount * 500;
+      if (extraBed) {
+        totalRatePerNight += 500;
+      }
+    }
+
+    const totalPrice = diffNights * totalRatePerNight;
 
     // Update displays
     if (totalNightsSpan) {
@@ -359,6 +388,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   if (modalRoomType) modalRoomType.addEventListener('change', calculateNightsAndPrice);
+  if (modalAdults) modalAdults.addEventListener('change', calculateNightsAndPrice);
+  if (modalChildren) modalChildren.addEventListener('change', calculateNightsAndPrice);
+  const extraBedCheckbox = document.getElementById('modal-extra-bed');
+  if (extraBedCheckbox) extraBedCheckbox.addEventListener('change', calculateNightsAndPrice);
 
   // --- SUBMIT MODAL RESERVATION ---
   const modalBookingForm = document.getElementById('modal-booking-form');

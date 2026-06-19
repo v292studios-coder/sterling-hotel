@@ -344,12 +344,12 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <label for="modal-room-type" class="form-label">Room / Suite / Dormitory</label>
               <select id="modal-room-type" class="form-select">
-                <option value="deluxe">Deluxe Garden Room (₹4,500/n)</option>
-                <option value="premier">Premier Room (₹6,500/n)</option>
-                <option value="suite">Executive Ocean Suite (₹12,000/n)</option>
-                <option value="penthouse">Sterling Penthouse (₹25,000/n)</option>
+                <option value="suite">Suite Room (₹2,500/n)</option>
+                <option value="deluxe" selected>Deluxe Room (₹2,000/n)</option>
+                <option value="double">Double/King size Room (₹1,800/n)</option>
+                <option value="dormitory">Dormitory (₹500/n)</option>
               </select>
             </div>
             <div class="form-row" style="margin-bottom: 0;">
@@ -360,6 +360,8 @@
                   <option value="2" selected>2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
                 </select>
               </div>
               <div class="form-group">
@@ -369,8 +371,22 @@
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top: 15px; margin-bottom: 0;">
+            <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
+              <input type="checkbox" id="modal-extra-bed" style="width: 18px; height: 18px; cursor: pointer;">
+              <label for="modal-extra-bed" class="form-label" style="margin-bottom: 0; cursor: pointer; user-select: none;">Request Extra Bed (+₹500/night)</label>
+            </div>
+            <div class="form-group">
+              <span class="text-stone" style="font-size: var(--fs-xs); display: block; line-height: 1.4;">
+                * Extra person above age 9 / Extra bed: ₹500/night.<br>
+                * Kids under age 9: free of charge.
+              </span>
             </div>
           </div>
           <div class="divider" style="margin-block: 24px;"></div>
@@ -435,57 +451,57 @@
       const room = params.get('room') || 'deluxe';
 
       const roomsData = {
+        'suite': {
+          title: 'Suite Room',
+          price: '₹2,500',
+          desc: 'Elegant living and dining spaces, private balcony, premium marble bath, and custom local wood furnishings.',
+          size: '850 sqft / 79 sqm',
+          guests: '3 Adults',
+          bed: '1 Grand King Bed + 1 Rollaway Couch',
+          view: 'Lush City or Garden Views',
+          extra: 'Extra person / extra bed: ₹500/night (Kids under 9 free)',
+          hero: 'assets/images/room-suite.webp',
+          img1: 'assets/images/room-suite.webp',
+          img2: 'assets/images/room-deluxe.webp',
+          img3: 'assets/images/hero-main.webp'
+        },
         'deluxe': {
-          title: 'Deluxe Garden Room',
-          price: '₹4,500',
-          desc: 'Our Deluxe Garden Rooms represent the ultimate combination of modern architectural layout and warm botanical visuals. Opening out onto private terraces facing the historic property boundaries, each space offers a private respite from the outside world.',
+          title: 'Deluxe Room',
+          price: '₹2,000',
+          desc: 'Luxurious contemporary room with botanical garden views, plush bedding, executive desk, and modern en-suite.',
           size: '450 sqft / 42 sqm',
           guests: '2 Adults',
           bed: '1 King Bed (Signature Linen)',
           view: 'Lush Landscaped Botanical Gardens',
-          extra: 'Baby Crib available upon request',
+          extra: 'Extra person / extra bed: ₹500/night (Kids under 9 free)',
           hero: 'assets/images/room-deluxe.webp',
           img1: 'assets/images/room-deluxe.webp',
           img2: 'assets/images/room-suite.webp',
           img3: 'assets/images/hero-main.webp'
         },
-        'premier': {
-          title: 'Premier Ocean Room',
-          price: '₹6,500',
-          desc: 'Enjoy front-row ocean views from the Premier Ocean Room. With spacious layouts, floor-to-ceiling double-glazed windows, and automated light and shade systems, you can watch the sunrise from the luxury of your bed.',
+        'double': {
+          title: 'Double/King size Room',
+          price: '₹1,800',
+          desc: 'Comfortable layout featuring a grand double or king size bed, cozy lounging corner, and high-speed amenities.',
           size: '550 sqft / 51 sqm',
           guests: '2 Adults',
-          bed: '1 King Bed or 2 Twin Beds',
-          view: 'Stunning Panoramas of the Deep Ocean',
-          extra: 'One extra single bed can be set up',
+          bed: '1 Double/King Bed',
+          view: 'Urban City skyline',
+          extra: 'Extra person / extra bed: ₹500/night (Kids under 9 free)',
           hero: 'assets/images/room-suite.webp',
           img1: 'assets/images/room-suite.webp',
           img2: 'assets/images/room-deluxe.webp',
           img3: 'assets/images/pool.webp'
         },
-        'suite': {
-          title: 'Executive Ocean Suite',
-          price: '₹12,000',
-          desc: 'The Executive Ocean Suite offers separated living and sleeping zones. Featuring double private balconies, walk-in closets, marble en-suite bathrooms, and specialized services, it represents the absolute pinnacle of coastal comfort.',
-          size: '850 sqft / 79 sqm',
-          guests: '3 Adults',
-          bed: '1 Grand King Bed + 1 Rollaway Couch',
-          view: 'Panoramic Ocean Views',
-          extra: 'Included personal butler service 24/7',
-          hero: 'assets/images/room-suite.webp',
-          img1: 'assets/images/room-suite.webp',
-          img2: 'assets/images/room-deluxe.webp',
-          img3: 'assets/images/hero-main.webp'
-        },
-        'penthouse': {
-          title: 'The Sterling Penthouse',
-          price: '₹25,000',
-          desc: 'The absolute jewel of our accommodations. The Sterling Penthouse takes over the top floor, hosting a bespoke bar, outdoor pool, grand piano, and curated original paintings. Ideal for VIP events and private retreats.',
-          size: '2,400 sqft / 223 sqm',
-          guests: '4 Adults',
-          bed: '2 Grand King Beds (En-Suite Bathrooms)',
-          view: 'Glittering Ocean and Horizon Skyline Views',
-          extra: 'Private cocktail bar and customized chef menus',
+        'dormitory': {
+          title: 'Dormitory',
+          price: '₹500',
+          desc: 'Clean, modern shared sanctuary featuring comfortable single beds, personal lockers, and shared bath facilities.',
+          size: 'Single Bed Space',
+          guests: '1 Person',
+          bed: '1 Single Bed',
+          view: 'Resort Courtyard',
+          extra: 'Shared space. Kids under 9 free.',
           hero: 'assets/images/hero-main.webp',
           img1: 'assets/images/hero-main.webp',
           img2: 'assets/images/room-suite.webp',

@@ -222,12 +222,12 @@
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="modal-room-type" class="form-label">Room / Suite</label>
+              <label for="modal-room-type" class="form-label">Room / Suite / Dormitory</label>
               <select id="modal-room-type" class="form-select">
-                <option value="deluxe">Deluxe Garden Room (₹4,500/n)</option>
-                <option value="premier">Premier Room (₹6,500/n)</option>
-                <option value="suite">Executive Ocean Suite (₹12,000/n)</option>
-                <option value="penthouse">Sterling Penthouse (₹25,000/n)</option>
+                <option value="suite">Suite Room (₹2,500/n)</option>
+                <option value="deluxe" selected>Deluxe Room (₹2,000/n)</option>
+                <option value="double">Double/King size Room (₹1,800/n)</option>
+                <option value="dormitory">Dormitory (₹500/n)</option>
               </select>
             </div>
             <div class="form-row" style="margin-bottom: 0;">
@@ -238,6 +238,8 @@
                   <option value="2" selected>2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
                 </select>
               </div>
               <div class="form-group">
@@ -247,8 +249,22 @@
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
+                  <option value="4">4</option>
                 </select>
               </div>
+            </div>
+          </div>
+
+          <div class="form-row" style="margin-top: 15px; margin-bottom: 0;">
+            <div class="form-group" style="flex-direction: row; align-items: center; gap: 8px;">
+              <input type="checkbox" id="modal-extra-bed" style="width: 18px; height: 18px; cursor: pointer;">
+              <label for="modal-extra-bed" class="form-label" style="margin-bottom: 0; cursor: pointer; user-select: none;">Request Extra Bed (+₹500/night)</label>
+            </div>
+            <div class="form-group">
+              <span class="text-stone" style="font-size: var(--fs-xs); display: block; line-height: 1.4;">
+                * Extra person above age 9 / Extra bed: ₹500/night.<br>
+                * Kids under age 9: free of charge.
+              </span>
             </div>
           </div>
           <div class="divider" style="margin-block: 24px;"></div>
