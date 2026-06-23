@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (bookingBarForm) {
     bookingBarForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      window.location.href = "book.html";
+      window.location.href = "/book";
     });
   }
 
@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.open-booking-modal').forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      window.location.href = "book.html";
+      window.location.href = "/book";
     });
   });
 
