@@ -1,5 +1,5 @@
 /* ============================================================
-   Sterling Hotels and Resorts — GALLERY & LIGHTBOX ENGINE
+   CJ Grande by Sterling Hotels & Resorts — GALLERY & LIGHTBOX ENGINE
    Masonry Filter · Lightbox Navigation · Key Controls
    ============================================================ */
 
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const img = item.querySelector('img');
       return {
         src: img.getAttribute('src'),
-        alt: img.getAttribute('alt') || 'Sterling Hotels and Resorts Gallery'
+        alt: img.getAttribute('alt') || 'CJ Grande by Sterling Hotels & Resorts Gallery'
       };
     });
   };

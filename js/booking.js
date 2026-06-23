@@ -1,5 +1,5 @@
 /* ============================================================
-   Sterling Hotels and Resorts — BOOKING & MODAL ENGINE
+   CJ Grande by Sterling Hotels & Resorts — BOOKING & MODAL ENGINE
    India Date Format (DD/MM/YYYY) · Progressive Flatpickr
    ============================================================ */
 

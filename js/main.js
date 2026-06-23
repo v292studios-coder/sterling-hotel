@@ -1,5 +1,5 @@
 /* ============================================================
-   Sterling Hotels and Resorts — MAIN JS
+   CJ Grande by Sterling Hotels & Resorts — MAIN JS
    Scroll Observer · Parallax · Navigation · Scroll Transitions
    ============================================================ */
 

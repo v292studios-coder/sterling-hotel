@@ -1,5 +1,5 @@
 /* ============================================================
-   Sterling Hotels and Resorts — TESTIMONIAL CAROUSEL
+   CJ Grande by Sterling Hotels & Resorts — TESTIMONIAL CAROUSEL
    Autoplay · Touch Swipe Support · Indicator Controls
    ============================================================ */
 
