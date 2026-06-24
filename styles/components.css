@@ -1387,6 +1387,10 @@
 
 /* ── RESPONSIVE: TABLETS & MOBILE ───────────────────────────── */
 @media (max-width: 1100px) {
+  .booking-bar {
+    max-width: 100%;
+    margin-inline: 0;
+  }
   .amenities-grid { grid-template-columns: repeat(3, 1fr); }
   .footer__top { grid-template-columns: 1fr 1fr; gap: var(--sp-10); }
 }
