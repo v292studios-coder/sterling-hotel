@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
         totalRatePerNight += 500;
       }
     } else {
-      // Suite, Deluxe, Double/King standard capacity is 2 adults. Extra adults or people above 9 are charged Rs 500.
+      // Suite, Deluxe, Double/Twin standard capacity is 2 adults. Extra adults or people above 9 are charged Rs 500.
       // Kids under 9 free.
       const extraPersonCount = Math.max(0, adults - 2);
       totalRatePerNight += extraPersonCount * 500;
