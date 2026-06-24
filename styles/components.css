@@ -364,6 +364,10 @@
   color: var(--clr-dark);
   cursor: pointer;
   padding: 0;
+  padding-right: 24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .booking-bar__guests {
