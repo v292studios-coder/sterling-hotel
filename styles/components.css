@@ -314,10 +314,7 @@
   position: relative;
   z-index: 10;
   margin-top: -40px;
-  margin-inline: var(--gutter);
-  max-width: calc(var(--max-w) - var(--gutter) * 2);
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
 }
 
 .booking-bar__inner {
