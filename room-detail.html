@@ -498,6 +498,14 @@
       document.getElementById('gallery-img-1').src = selected.img1;
       document.getElementById('gallery-img-2').src = selected.img2;
 
+      if (room === 'dormitory') {
+        document.getElementById('gallery-img-2').parentElement.style.display = 'none';
+        document.getElementById('detail-gallery').style.gridTemplateColumns = '1fr';
+      } else {
+        document.getElementById('gallery-img-2').parentElement.style.display = 'block';
+        document.getElementById('detail-gallery').style.gridTemplateColumns = '1fr 1fr';
+      }
+
       // Set sidebar button attribute to book this room
       document.getElementById('sidebar-book-btn').setAttribute('data-room', room);
     });
