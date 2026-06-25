@@ -425,7 +425,7 @@
         'suite': {
           title: 'Suite Room',
           price: '₹2,600',
-          desc: 'Luxury and space combined for a premium stay experience. Ideal for families, executives, and extended stays.',
+          desc: '<ul style="padding-left: 20px; margin-bottom: 0;"><li>Luxury and space combined for a premium stay experience.</li><li>Ideal for families, executives, and extended stays.</li></ul>',
           size: '850 sqft / 79 sqm',
           guests: '3 Adults',
           bed: '1 Grand King Bed + 1 Rollaway Couch',
@@ -485,7 +485,7 @@
       // Update DOM
       document.getElementById('breadcrumb-room-name').textContent = selected.title;
       document.getElementById('detail-title').textContent = selected.title;
-      document.getElementById('detail-desc').textContent = selected.desc;
+      document.getElementById('detail-desc').innerHTML = selected.desc;
       document.getElementById('spec-size').textContent = selected.size;
       document.getElementById('spec-guests').textContent = selected.guests;
       document.getElementById('spec-bed').textContent = selected.bed;
