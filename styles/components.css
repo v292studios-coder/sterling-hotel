@@ -1410,9 +1410,12 @@
   .stats-strip__divider { display: none; }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1180px) {
   .nav__links { display: none; }
   .nav__hamburger { display: flex; }
+}
+
+@media (max-width: 1024px) {
   .booking-bar { margin-top: 0; }
   .booking-bar__inner { grid-template-columns: 1fr; }
   .booking-bar__field { border-right: none; border-bottom: 1px solid var(--clr-cream); }
